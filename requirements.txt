@@ -1,3 +1,4 @@
+PasteDeploy
 pyramid
 requests
 waitress
