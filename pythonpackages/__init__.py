@@ -1,5 +1,5 @@
 
 
-def main(self):
+def main(global_config, **settings):
     """
     """
