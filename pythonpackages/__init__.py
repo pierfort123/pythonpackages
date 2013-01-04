@@ -5,7 +5,7 @@ from pyramid.response import Response
 def root(request):
     """
     """
-    return Response('Hello world')
+    return {}
 
 
 def main(global_config, **settings):
