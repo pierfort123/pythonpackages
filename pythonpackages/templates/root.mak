@@ -88,21 +88,21 @@
           <h4>Startup Row</h4>
           <p>Featured on Startup Row at PyCon 2012.</p>
 
-          <h4>One-click release</h4>
-          <p>Provides ability to release packages from GitHub to PyPI through the web, without a local checkout.</p>
+          <h4>One-click Release</h4>
+          <p>Provides the ability to release packages from GitHub to PyPI through the web without a local checkout.</p>
 
-          <h4>Git push to release</h4>
-          <p>Provides a GitHub service hook to enable releases via commit message e.g. git commit -a -m "Release"; git push</p>
+          <h4>Git Push To Release</h4>
+          <p>Provides a GitHub service hook to enable releases via commit & push e.g. git commit -a -m "Release"; git push.</p>
         </div>
 
         <div class="span6">
-          <h4>Package featuring</h4>
+          <h4>Package Featuring</h4>
           <p>A place to promote your Python packages.</p>
 
-          <h4>Package statistics</h4>
+          <h4>Package Statistics</h4>
           <p>A place to obsess over the number of downloads for your Python packages.</p>
 
-          <h4>Package links</h4>
+          <h4>Package Links</h4>
           <p>An aggregrator of useful links to documentation on readthedocs.org and packages.python.org for your Python packages.</p>
         </div>
       </div>
