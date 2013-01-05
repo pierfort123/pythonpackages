@@ -69,7 +69,7 @@
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
           <li class="active"><a href="/">Home</a></li>
-          <li><a href="https://github.com/pythonpackages">GitHub</a></li>
+          <li><a href="https://github.com/pythonpackages/pythonpackages">GitHub</a></li>
         </ul>
         <h3>PythonPackages</h3>
       </div>
