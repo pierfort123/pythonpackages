@@ -11,6 +11,7 @@
     <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
       body {
+        background: url(https://raw.github.com/pythonpackages/pythonpackages/master/img04.png) no-repeat left top;
         padding-top: 20px;
         padding-bottom: 40px;
       }
@@ -111,6 +112,8 @@
 
       <div class="footer">
         <p>&copy; <a href="http://aclark.net">ACLARK.NET, LLC</a> 2011 &mdash; 2013</p>
+        <br />
+        <p>Design by <a href="http://freecsstemplates.org">Free CSS Templates</a>, <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a> and <a href="http://twitter.com/aclark4life">@aclark4life</a>.</p>
       </div>
 
     </div> <!-- /container -->
