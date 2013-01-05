@@ -76,9 +76,9 @@
       <hr>
 
       <div class="jumbotron">
-        <h1>Super awesome marketing speak!</h1>
-        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <a class="btn btn-large btn-success" href="#">Sign up today</a>
+        <h1>We&apos;ll be right back!</h1>
+        <p class="lead">PythonPackages will return in Q1 2013 after a project reboot.</p>
+        <a class="btn btn-large btn-success" href="https://gittip.com/aclark4life">Support via gittip</a>
       </div>
 
       <hr>
