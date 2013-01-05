@@ -71,7 +71,7 @@
           <li class="active"><a href="/">Home</a></li>
           <li><a href="https://github.com/pythonpackages">GitHub</a></li>
         </ul>
-        <h3 class="muted">PythonPackages</h3>
+        <h3>PythonPackages</h3>
       </div>
 
       <hr>
