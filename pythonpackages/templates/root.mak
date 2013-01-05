@@ -59,7 +59,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-114-precomposed.png">
       <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-72-precomposed.png">
                     <link rel="apple-touch-icon-precomposed" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="http://twitter.github.com/bootstrap/assets/ico/favicon.png">
+                                   <link rel="shortcut icon" href="https://github.com/pythonpackages/pythonpackages/raw/master/favicon.ico">
   </head>
 
   <body>
@@ -90,7 +90,7 @@
           <p>Featured on Startup Row at PyCon 2012.</p>
 
           <h4>One-click Release</h4>
-          <p>Provides the ability to release packages from GitHub to PyPI through the web without a local checkout.</p>
+          <p>Provides the ability to release packages from GitHub to PyPI through the web i.e. without a local checkout.</p>
 
           <h4>Git Push To Release</h4>
           <p>Provides a GitHub service hook to enable releases via commit & push e.g. git commit -a -m "Release"; git push.</p>
