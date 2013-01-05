@@ -1,5 +1,4 @@
 from pyramid.config import Configurator
-from pyramid.response import Response
 
 
 def root(request):
