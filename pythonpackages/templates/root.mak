@@ -67,11 +67,10 @@
 
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
+          <li class="active"><a href="/">Home</a></li>
+          <li><a href="https://github.com/pythonpackages">GitHub</a></li>
         </ul>
-        <h3 class="muted">Project name</h3>
+        <h3 class="muted">PythonPackages</h3>
       </div>
 
       <hr>
