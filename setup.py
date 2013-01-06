@@ -8,4 +8,5 @@ setup(
     entry_points={
         'paste.app_factory': 'main=pythonpackages:main',
     },
+    test_suite = 'pythonpackages.tests.MyTest',
 )
