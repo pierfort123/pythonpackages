@@ -79,8 +79,8 @@
       <div class="jumbotron">
         <h1>We&apos;ll be right back!</h1>
         <p class="lead">PythonPackages will return in Q1 2013 after a project reboot.</p>
-        <a class="btn btn-large btn-success" href="http://gittip.com/aclark4life">Support via gittip</a>
-        <p class="lead">Join #pythonpackages on irc.freenode.net to discuss PythonPackages</p>
+        <p><a class="btn btn-large btn-success" href="http://gittip.com/aclark4life">Support via gittip</a></p>
+        <p class="lead">Discuss <strong>#pythonpackages</strong> on irc.freenode.net</p>
       </div>
 
       <hr>
