@@ -2,7 +2,6 @@ from pyramid.httpexceptions import HTTPFound
 from pyramid.security import authenticated_userid
 from pyramid.security import forget
 from pyramid.security import remember
-from urllib import parse as urlparse
 from . import config
 from . import utils
 import json
@@ -14,15 +13,13 @@ def login(request):
         Do OAUTH dance with GitHub (for sign in) and PyPI (for releasing
         packages)
     """
-    betacount = utils.get_beta_count()
     code = None
-    followers = utils.get_followers()
-    fortune = utils.get_fortune()
     num_downloads, num_packages, num_packages_pypi, num_times_featured = \
         utils.get_numbers()
     userid = authenticated_userid(request)
+
     qs = utils.get_query_string(request)
-    qs = urlparse.parse_qs(qs)
+
     # PyPI OAuth, not used for login
     if 'oauth_token' in qs:
         auth = requests.auth.OAuth1(config.PYPI_OAUTH_CONSUMER_KEY,
