@@ -83,11 +83,6 @@ def logout(request):
     """
         Forget user
     """
-#    # Redir https
-#    if request.headers.get('X-Forwarded-Proto') is not None:
-#        if request.headers['X-Forwarded-Proto'] != 'https':
-#            return HTTPMovedPermanently(location="https://%s%s" % (
-#                request.host, request.path_qs))
     userid = authenticated_userid(request)
     headers = forget(request)
     utils.logged_out(userid)
