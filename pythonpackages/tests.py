@@ -1,6 +1,7 @@
 import unittest
 from pyramid import testing
 
+
 class MyTest(unittest.TestCase):
     def setUp(self):
         self.config = testing.setUp()
@@ -24,4 +25,4 @@ class MyTest(unittest.TestCase):
         request = testing.DummyRequest()
         request.context = testing.DummyResource()
         response = view_fn(request)
-        self.assertEqual(response, {'greeting':'hello'})
+        self.assertEqual(response, {'greeting': 'hello'})

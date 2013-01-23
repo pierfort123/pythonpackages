@@ -2,6 +2,7 @@ from pyramid.httpexceptions import HTTPFound
 from pyramid.security import authenticated_userid
 from pyramid.security import forget
 from pyramid.security import remember
+from urllib import parse as urlparse
 from . import config
 from . import utils
 import json
@@ -60,9 +61,6 @@ def login(request):
         return HTTPFound(location="/dashboard", headers=headers)
     recent_users = dict()
     return {
-        'betacount': betacount,
-        'followers': followers,
-        'fortune': fortune,
         'github_auth': config.GITHUB_URL_AUTH,
         'menu': menu,
         'headers': headers,
