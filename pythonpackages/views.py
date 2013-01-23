@@ -10,8 +10,7 @@ import requests
 
 def login(request):
     """
-        Do OAUTH dance with GitHub (for sign in) and PyPI (for releasing
-        packages)
+    Do OAuth: with GitHub for sign in, and PyPI for package releasing.
     """
     code = None
     num_downloads, num_packages, num_packages_pypi, num_times_featured = \
