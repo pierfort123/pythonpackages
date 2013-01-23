@@ -8,11 +8,6 @@ def login(request):
         Do OAUTH dance with GitHub (for sign in) and PyPI (for releasing
         packages)
     """
-#    # Redir https
-#    if request.headers.get('X-Forwarded-Proto') is not None:
-#        if request.headers['X-Forwarded-Proto'] != 'https':
-#            return HTTPMovedPermanently(location="https://%s%s" % (
-#                request.host, request.path_qs))
     betacount = utils.get_beta_count()
     code = None
     followers = utils.get_followers()
