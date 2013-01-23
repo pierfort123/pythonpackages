@@ -1,6 +1,12 @@
+from pyramid.httpexceptions import HTTPFound
 from pyramid.security import authenticated_userid
+from pyramid.security import forget
+from pyramid.security import remember
+from urllib import parse as urlparse
 from . import config
 from . import utils
+import json
+import requests
 
 
 def login(request):
@@ -86,4 +92,3 @@ def logout(request):
     headers = forget(request)
     utils.logged_out(userid)
     return HTTPFound(location="/", headers=headers)
-
