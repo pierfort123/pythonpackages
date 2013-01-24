@@ -56,16 +56,10 @@ def login(request):
         headers = remember(request, userid)
         utils.set_logged_in(userid)
         return HTTPFound(location="/dashboard", headers=headers)
-    recent_users = dict()
     return {
         'github_auth': config.GITHUB_URL_AUTH,
         'menu': menu,
         'headers': headers,
-        'num_downloads': num_downloads,
-        'num_packages': num_packages,
-        'num_packages_pypi': num_packages_pypi,
-        'num_times_featured': num_times_featured,
-        'recent_users': recent_users,
         'userid': userid,
     }
 
