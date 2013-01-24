@@ -14,13 +14,10 @@ def login(request):
     Do OAuth: with GitHub for sign in, and PyPI for package releasing.
     """
     code = None
-    num_downloads, num_packages, num_packages_pypi, num_times_featured = \
-        utils.get_numbers()
+    qs = utils.get_query_string(request)
     userid = authenticated_userid(request)
 
-    qs = utils.get_query_string(request)
-
-    # PyPI OAuth, not used for login
+    # PyPI OAuth, not used for sign in
     if 'oauth_token' in qs:
         auth = requests.auth.OAuth1(config.PYPI_OAUTH_CONSUMER_KEY,
             config.PYPI_OAUTH_CONSUMER_SECRET,
