@@ -66,7 +66,7 @@ def login(request):
 
 def logout(request):
     """
-        Forget user
+    Forget user
     """
     userid = authenticated_userid(request)
     headers = forget(request)
