@@ -1,3 +1,5 @@
+dev:
+	git push dev master
 flake:
 	flake8 pythonpackages/*.py
 push:
