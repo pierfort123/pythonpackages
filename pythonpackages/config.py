@@ -1,4 +1,6 @@
+from urllib import parse as urlparse
 import os
+import redis
 
 
 GITHUB_CLIENT_ID = os.environ.get('GITHUB_CLIENT_ID', None)

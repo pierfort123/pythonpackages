@@ -1,4 +1,5 @@
 from urllib import parse
+from . import config
 
 
 def get_query_string(request):
@@ -17,26 +18,28 @@ def get_logged_in():
     Return a list of users that have signed in.
     """
     try:
-        return db.smembers('logged_in')
+        return config.REDIS.smembers('logged_in')
     except:
         # XXX No db
         return list()
+
 
 def logged_out(user=None):
     """
     If user is None remove from list of signed in users.
     """
     if user is not None:
-        db.srem('logged_in', user)
+        config.REDIS.srem('logged_in', user)
         return
+
 
 def set_logged_in(user):
     """
     Save signed in users to the database.
     """
     try:
-        db.sadd('logged_in', user)  # logged in users
-        db.sadd('site_users', user)  # all users ever
+        config.REDIS.sadd('logged_in', user)  # logged in users
+        config.REDIS.sadd('site_users', user)  # all users ever
     except:
         pass
         # XXX No db
