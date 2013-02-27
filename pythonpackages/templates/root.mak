@@ -70,7 +70,7 @@
         <ul class="nav nav-pills pull-right">
           <li><a href="https://github.com/pythonpackages/pythonpackages">Code</a></li>
           <li><a href="http://docs.pythonpackages.com">Docs</a></li>
-          <li class="active"><a href="/">Home</a></li>
+          <li><a href="http://index.pythonpackages.com">Index</a></li>
         </ul>
         <h3>PythonPackages</h3>
       </div>
