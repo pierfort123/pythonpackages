@@ -1,4 +1,4 @@
-dev:
+push:
 	git push
 	git push dev master
 flake:
