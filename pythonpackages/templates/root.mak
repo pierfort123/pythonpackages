@@ -52,14 +52,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">PythonPackages</a>
+          <a class="brand" href="/">PythonPackages</a>
           <div class="nav-collapse collapse">
             <p class="navbar-text pull-right">
               Logged in as <a href="#" class="navbar-link">Username</a>
             </p>
             <ul class="nav">
               <%block name="nav">
-              <li class="active"><a href="#">Home</a></li>
+              <li class="active"><a href="/">Home</a></li>
               <li><a href="/about">About</a></li>
               <li><a href="#contact">Contact</a></li>
               </%block>
