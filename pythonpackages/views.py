@@ -9,6 +9,10 @@ import json
 import requests
 
 
+def about(request):
+    return {}
+
+
 def login(request):
     """
     Do OAuth: with GitHub for sign in, and PyPI for package releasing.
