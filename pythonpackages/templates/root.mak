@@ -58,9 +58,11 @@
               Logged in as <a href="#" class="navbar-link">Username</a>
             </p>
             <ul class="nav">
+              <%block name="nav">
               <li class="active"><a href="#">Home</a></li>
               <li><a href="/about">About</a></li>
               <li><a href="#contact">Contact</a></li>
+              </%block>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
