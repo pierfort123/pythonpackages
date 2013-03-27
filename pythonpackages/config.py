@@ -18,7 +18,7 @@ GITHUB_URL_AUTH = (GITHUB_URL + '/login/oauth/authorize?client_id=%s&scope=%s'
 PYPI_OAUTH_CONSUMER_KEY = os.environ.get('PYPI_OAUTH_CONSUMER_KEY', None)
 PYPI_OAUTH_CONSUMER_SECRET = os.environ.get('PYPI_OAUTH_CONSUMER_SECRET', None)
 REDIS = None
-if 'REDISTOGO_URL' in os.environ:  # XXX Replace with Redis Cloud config
+if 'REDISTOGO_URL' in os.environ:
     urlparse.uses_netloc.append('redis')
     url = urlparse.urlparse(os.environ['REDISTOGO_URL'])
     REDIS = redis.Redis(host=url.hostname, port=url.port, db=0,
