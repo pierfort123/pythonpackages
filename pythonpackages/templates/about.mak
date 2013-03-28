@@ -7,34 +7,37 @@
 </%block>
 
 <%block name="foo">
-          <div class="row-fluid">
-          <div class="span2"></div>
-          <div class="span7"><img style="text-align: center" class="thumbnail" src="/static/img/python-packaging-pitch1.jpg"></div>
+        <h1>The Pitch</h1>
+        <p>This is our pitch to explain the PythonPackages service and why you need it. No more brown bags!</p>
+        <br />
+        <div class="row-fluid">
+        <div class="span2"></div>
+        <div class="span7"><img style="text-align: center" class="thumbnail" src="/static/img/python-packaging-pitch1.jpg"></div>
+        </div>
+        <br />
+        <div class="row-fluid">
+        <div class="span7"><img style="text-align: center" class="thumbnail" src="/static/img/python-packaging-pitch2.jpg"></div>
+        <div class="span5"></div>
+        </div>
+        <br />
+        <div class="row-fluid">
+          <div class="span12" style="text-align: center">
+              <img src="/static/img/pythonpackages-diagram.png">
           </div>
-          <br />
-          <div class="row-fluid">
-          <div class="span7"><img style="text-align: center" class="thumbnail" src="/static/img/python-packaging-pitch2.jpg"></div>
-          <div class="span5"></div>
-          </div>
-          <br />
-          <div class="row-fluid">
-            <div class="span12" style="text-align: center">
-                <img src="/static/img/pythonpackages-diagram.png">
-            </div>
-          </div>
-          <br />
-          <div class="row-fluid">
-          <div class="span7"><img style="text-align: center" class="thumbnail" src="/static/img/python-packaging-pitch5.jpg"></div>
-          <div class="span5"></div>
-          </div>
-          <br />
-          <div class="row-fluid">
-          <div class="span5"></div>
-          <div class="span7"><img style="text-align: center" class="thumbnail" src="/static/img/python-packaging-pitch3.jpg"></div>
-          </div>
-          <br />
-          <div class="row-fluid">
-          <div class="span2"></div>
-          <div class="span7"><img style="text-align: center" class="thumbnail" src="/static/img/python-packaging-pitch4.jpg"></div>
-          </div>
+        </div>
+        <br />
+        <div class="row-fluid">
+        <div class="span7"><img style="text-align: center" class="thumbnail" src="/static/img/python-packaging-pitch5.jpg"></div>
+        <div class="span5"></div>
+        </div>
+        <br />
+        <div class="row-fluid">
+        <div class="span5"></div>
+        <div class="span7"><img style="text-align: center" class="thumbnail" src="/static/img/python-packaging-pitch3.jpg"></div>
+        </div>
+        <br />
+        <div class="row-fluid">
+        <div class="span2"></div>
+        <div class="span7"><img style="text-align: center" class="thumbnail" src="/static/img/python-packaging-pitch4.jpg"></div>
+        </div>
 </%block>
