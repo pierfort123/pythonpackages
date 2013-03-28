@@ -94,11 +94,12 @@
           </div><!--/.well -->
         </div><!--/span-->
         <div class="span9">
-          <%block name="foo">
           <div class="hero-unit">
+            <%block name="foo">
             <h1>Hello, world!</h1>
             <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
             <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+            </%block>
           </div>
           <div class="row-fluid">
             <div class="span4">
@@ -135,7 +136,6 @@
             </div><!--/span-->
           </div><!--/row-->
         </div><!--/span-->
-        </%block>
       </div><!--/row-->
 
       <hr>

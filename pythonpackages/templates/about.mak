@@ -7,9 +7,6 @@
 </%block>
 
 <%block name="foo">
-          <h1>About</h1>
-          <br />
-
           <div class="row-fluid">
           <div class="span2"></div>
           <div class="span7"><img style="text-align: center" class="thumbnail" src="/static/img/python-packaging-pitch1.jpg"></div>
@@ -20,7 +17,6 @@
           <div class="span5"></div>
           </div>
           <br />
-
           <div class="row-fluid">
             <div class="span12" style="text-align: center">
                 <img src="/static/img/pythonpackages-diagram.png">
