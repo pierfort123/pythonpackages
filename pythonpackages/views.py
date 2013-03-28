@@ -3,8 +3,8 @@ from pyramid.security import authenticated_userid
 from pyramid.security import forget
 from pyramid.security import remember
 from urllib import parse as urlparse
-from pythonpackages import config
-from pythonpackages import utils
+from . import config
+from . import utils
 import json
 import requests
 

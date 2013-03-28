@@ -15,4 +15,4 @@ class TestLoginView(unittest.TestCase):
         request = testing.DummyRequest()
         request.context = testing.DummyResource()
         response = login(request)
-        self.assertEqual(response, {'greeting': 'hello'})
+        self.assertTrue('userid' in response)
