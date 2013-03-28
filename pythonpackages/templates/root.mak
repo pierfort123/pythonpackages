@@ -101,6 +101,7 @@
             <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
             </%block>
           </div>
+          <%block name="bar">
           <div class="row-fluid">
             <div class="span4">
               <h2>Heading</h2>
@@ -135,6 +136,7 @@
               <p><a class="btn" href="#">View details &raquo;</a></p>
             </div><!--/span-->
           </div><!--/row-->
+          </%block>
         </div><!--/span-->
       </div><!--/row-->
 

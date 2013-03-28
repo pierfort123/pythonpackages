@@ -9,7 +9,8 @@
 <%block name="foo">
         <h1>The Pitch</h1>
         <p>This is our pitch to explain the PythonPackages service and why you need it. No more brown bags!</p>
-        <br />
+</%block>
+<%block name="bar">
         <div class="row-fluid">
         <div class="span2"></div>
         <div class="span7"><img style="text-align: center" class="thumbnail" src="/static/img/python-packaging-pitch1.jpg"></div>
