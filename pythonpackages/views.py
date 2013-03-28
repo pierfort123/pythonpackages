@@ -12,6 +12,8 @@ import requests
 def about(request):
     return {}
 
+def contact(request):
+    return {}
 
 def login(request):
     """

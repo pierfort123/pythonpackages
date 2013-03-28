@@ -21,6 +21,11 @@ def main(global_config, **settings):
         route_name='about',
         renderer='pythonpackages:templates/about.mak')
 
+    config.add_route('contact', '/contact')
+    config.add_view('pythonpackages.views.contact',
+        route_name='contact',
+        renderer='pythonpackages:templates/contact.mak')
+
     config.add_route('login', '/login')
     config.add_view('pythonpackages.views.login', route_name='login',
          renderer='pythonpackages:templates/login.mak')
