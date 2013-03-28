@@ -2,7 +2,7 @@ import unittest
 from pyramid import testing
 
 
-class TestLoginView(unittest.TestCase):
+class TestSuite(unittest.TestCase):
 
     def setUp(self):
         self.config = testing.setUp()
