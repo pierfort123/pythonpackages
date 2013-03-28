@@ -25,4 +25,6 @@ def main(global_config, **settings):
     config.add_view('pythonpackages.views.login', route_name='login',
          renderer='pythonpackages:templates/login.mak')
 
+    config.add_static_view('static', 'pythonpackages:static', cache_max_age=3600)
+
     return config.make_wsgi_app()
