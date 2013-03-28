@@ -3,8 +3,8 @@ from pyramid.security import authenticated_userid
 from pyramid.security import forget
 from pyramid.security import remember
 from urllib import parse as urlparse
-#from . import config
-from . import utils
+from pythonpackages import config
+from pythonpackages import utils
 import json
 import requests
 
@@ -12,8 +12,10 @@ import requests
 def about(request):
     return {}
 
+
 def contact(request):
     return {}
+
 
 def login(request):
     """
@@ -25,19 +27,27 @@ def login(request):
 
     # PyPI OAuth, not used for sign in
     if 'oauth_token' in qs:
-        auth = requests.auth.OAuth1(config.PYPI_OAUTH_CONSUMER_KEY,
+        auth = requests.auth.OAuth1(
+            config.PYPI_OAUTH_CONSUMER_KEY,
             config.PYPI_OAUTH_CONSUMER_SECRET,
-            unicode(utils.db.get(config.REDIS_KEY_USER_PYPI_OAUTH_TOKEN %
-                userid)),
-            unicode(utils.db.get(config.REDIS_KEY_USER_PYPI_OAUTH_SECRET %
-                userid)),
+            unicode(
+                utils.db.get(
+                    config.REDIS_KEY_USER_PYPI_OAUTH_TOKEN %
+                    userid)),
+            unicode(
+                utils.db.get(
+                    config.REDIS_KEY_USER_PYPI_OAUTH_SECRET %
+                    userid)),
             signature_type='auth_header')
-        response = requests.get(config.PYPI_URL_OAUTH_ACCESS_TOKEN, auth=auth,
+        response = requests.get(
+            config.PYPI_URL_OAUTH_ACCESS_TOKEN, auth=auth,
             verify=False)
         response = urlparse.parse_qs(response.content)
-        utils.db.set(config.REDIS_KEY_USER_PYPI_OAUTH_SECRET % userid,
+        utils.db.set(
+            config.REDIS_KEY_USER_PYPI_OAUTH_SECRET % userid,
             unicode(response['oauth_token_secret'][0]))
-        utils.db.set(config.REDIS_KEY_USER_PYPI_OAUTH_TOKEN % userid,
+        utils.db.set(
+            config.REDIS_KEY_USER_PYPI_OAUTH_TOKEN % userid,
             unicode(response['oauth_token'][0]))
         return HTTPFound(location="/manage/account/pypi")
     if userid is not None:

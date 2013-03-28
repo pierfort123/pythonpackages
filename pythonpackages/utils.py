@@ -1,5 +1,5 @@
 from urllib import parse
-#from . import config
+from . import config
 
 
 def get_query_string(request):
