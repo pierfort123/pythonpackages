@@ -12,6 +12,6 @@
 </%block>
 <%block name="bar">
     <div class="span9">
-        <i class="icon-github icon-3x pull-left"></i><p>Our GitHub organization, which contains code for this website and other project-related repositories: <a href="https://github.com/pythonpackages">https://github.com/pythonpackages</a>.</p>
+        <i class="icon-github icon-3x pull-left"></i><p>Our GitHub organization, which contains the code for this website and other project-related repositories: <a href="https://github.com/pythonpackages">https://github.com/pythonpackages</a>.</p>
     </div>
 </%block>
