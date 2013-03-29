@@ -33,6 +33,11 @@ def logged_out(user=None):
         return
 
 
+def no_sign_in():
+    """
+    """
+
+
 def set_logged_in(user):
     """
     Save signed in users to the database.

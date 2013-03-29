@@ -9,6 +9,7 @@
 
     <!-- Le styles -->
     <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/font-awesome.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;

@@ -11,5 +11,11 @@
         <p>We are here to help you package and release your Python software. Get in touch!</p>
 </%block>
 <%block name="bar">
-       Holisticly monetize standardized technology after virtual relationships. Monotonectally customize adaptive core competencies rather than fully tested leadership. Rapidiously extend customer directed meta-services after worldwide e-business.
+
+<div class="span12">
+<p class="lead">
+<i class="icon-gift"></i>
+Hopefully you think Font Awesome <em>is</em> awesome. I've put hundreds of hours into the project to give back to the open source community. If you'd like, here are some ways you can tell me thanks for all my hard work.
+</p>
+</div>
 </%block>

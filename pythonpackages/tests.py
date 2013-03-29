@@ -15,4 +15,5 @@ class TestSuite(unittest.TestCase):
         request = testing.DummyRequest()
         request.context = testing.DummyResource()
         response = login(request)
+        import pdb ; pdb.set_trace()
         self.assertTrue('userid' in response)
