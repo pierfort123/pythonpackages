@@ -4,9 +4,15 @@ from setuptools import setup
 
 setup(
     name='pythonpackages',
-    packages=find_packages(),
     entry_points={
         'paste.app_factory': 'main=pythonpackages:main',
     },
+    install_requires=[
+        'pyramid',
+        'pyramid_redis_sessions',
+        'redis',
+        'requests',
+    ]
+    packages=find_packages(),
     test_suite = 'pythonpackages.tests.TestSuite',
 )
