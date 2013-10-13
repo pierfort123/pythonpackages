@@ -76,6 +76,8 @@
       </div>
     </div>
 
+    ${test}
+
     <div class="container">
       <!-- Example row of columns -->
       <div class="row">
