@@ -16,6 +16,12 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
 
+    <style>
+        .navbar {
+            background: #366C99;
+        }
+    </style>
+
   </head>
 
   <body>
