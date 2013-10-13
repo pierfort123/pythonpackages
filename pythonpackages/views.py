@@ -6,10 +6,6 @@ try:  # Py3
     from urllib import parse as urlparse
 except:  # Py2
     import urlparse
-from . import config
-from . import utils
-import json
-import requests
 
 
 def about(request):
@@ -23,12 +19,10 @@ def contact(request):
 def login(request):
     """
     """
+    return {}
 
 def logout(request):
     """
-    Forget user
     """
-    userid = authenticated_userid(request)
     headers = forget(request)
-    utils.logged_out(userid)
     return HTTPFound(location="/", headers=headers)
