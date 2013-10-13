@@ -81,8 +81,7 @@
       </div>
     </div>
 
-    ${test}
-
+    <%block name="body">
     <div class="container">
       <!-- Example row of columns -->
       <div class="row">
@@ -102,6 +101,7 @@
           <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
         </div>
       </div>
+      </%block>
 
       <hr>
 
