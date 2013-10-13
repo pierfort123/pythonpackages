@@ -42,4 +42,6 @@ def main(global_config, **settings):
     config.add_static_view(
         'static', 'pythonpackages:static', cache_max_age=3600)
 
+    config.include('pyramid_mako')
+
     return config.make_wsgi_app()
