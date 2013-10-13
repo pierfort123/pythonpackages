@@ -76,7 +76,7 @@
     <div class="jumbotron">
       <div class="container">
         <h1>Hello, Python Programmers!</h1>
-        <p>Python Packages integrates your GitHub repositories with the Python Package Index to allow for easier, faster and more reliable releases.
+        <p>Python Packages connects your GitHub account to your Python Package Index account to make releasing packages faster, easier and more reliable.
         <p><a class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
       </div>
     </div>
