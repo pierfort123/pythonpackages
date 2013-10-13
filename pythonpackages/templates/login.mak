@@ -1,4 +1,4 @@
-<%block name="body">
+<%block name="content">
 
     ${userid}
 

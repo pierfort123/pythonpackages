@@ -81,7 +81,7 @@
       </div>
     </div>
 
-    <%block name="body">
+    <%block name="content">
     <div class="container">
       <!-- Example row of columns -->
       <div class="row">
