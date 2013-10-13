@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="../../assets/ico/favicon.png">
+    <link rel="shortcut icon" href="https://github.com/pythonpackages/pythonpackages/blob/master/favicon.ico?raw=true">
 
-    <title>Jumbotron Template for Bootstrap</title>
+    <title>pythonpackages.com</title>
 
     <!-- Bootstrap core CSS -->
     <!-- Latest compiled and minified CSS -->
