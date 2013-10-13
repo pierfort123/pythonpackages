@@ -12,7 +12,7 @@ setup(
         'pyramid_redis_sessions',
         'redis',
         'requests',
-    ]
+    ],
     packages=find_packages(),
     test_suite = 'pythonpackages.tests.TestSuite',
 )
