@@ -12,7 +12,8 @@ import requests
 
 GITHUB_CLIENT_ID = os.environ.get('GITHUB_CLIENT_ID', '')
 GITHUB_CLIENT_SECRET = os.environ.get('GITHUB_CLIENT_SECRET', '')
-GITHUB_URL_AUTH = 'https://github.com/login/oauth/authorize?client_id=%s'
+GITHUB_URL_AUTH = 'https://github.com/login/oauth/authorize?client_id=%s' % (
+    GITHUB_CLIENT_ID)
 GITHUB_URL_AUTH_TOKEN = 'https://github.com/login/oauth/access_token'
 GITHUB_URL_USER = 'https://api.github.com/user?%s'
 
@@ -28,13 +29,11 @@ def contact(request):
 def login(request):
     """
     """
-    query_string = None
-    if 'QUERY_STRING' in request:
-        query_string = request['QUERY_STRING']
-    query_string = urlparse.parse_qs(query_string)
-    if query_string:
-        if 'code' in query_string:
-            code = query_string['code']
+    path_qs = request.path_qs
+    path_qs = urlparse.parse_qs(path_qs)
+    if path_qs:
+        if 'code' in path_qs:
+            code = path_qs['code']
             payload = {
                 'client_id': GITHUB_CLIENT_ID,
                 'client_secret': GITHUB_CLIENT_SECRET,
@@ -47,12 +46,22 @@ def login(request):
             headers = remember(request, userid)
             return HTTPFound(location="/", headers=headers)
     else:
-        HTTPFound(location=GITHUB_URL_AUTH % GITHUB_CLIENT_ID)
+        HTTPFound(location=GITHUB_URL_AUTH) 
 
-    return {}
+    return {
+        'userid': userid,
+    }
 
 def logout(request):
     """
     """
     headers = forget(request)
     return HTTPFound(location="/", headers=headers)
+
+
+def root(request):
+    """
+    """
+    return {
+        'auth_url': GITHUB_URL_AUTH,
+    }
