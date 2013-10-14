@@ -1,11 +1,19 @@
 from pyramid.config import Configurator
-from .store import redis
+import os
+import redis
+
+redis_url = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
+redis_secret = os.getenv('REDIS_SESSIONS_SECRET', '')
+redis = redis.from_url(redis_url)
 
 
 def main(global_config, **settings):
     """
     """
-    config = Configurator()
+
+    settings['redis.sessions.secret'] = redis_secret
+    settings['redis.sessions.url'] = redis_url
+    config = Configurator(settings=settings)
 
     config.add_route('root', '/')
     config.add_view(
@@ -23,5 +31,6 @@ def main(global_config, **settings):
         'static', 'pythonpackages:static', cache_max_age=3600)
 
     config.include('pyramid_mako')
+    config.include('pyramid_redis_sessions')
 
     return config.make_wsgi_app()

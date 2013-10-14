@@ -9,7 +9,7 @@ setup(
     },
     install_requires=[
         'pyramid',
-        'pyramid_redis_sessions',
+        'pyramid_redis_sessions==1.0a1',
         'pyramid_mako',
         'redis',
         'requests',
