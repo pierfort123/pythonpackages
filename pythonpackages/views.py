@@ -36,7 +36,7 @@ def root(request):
 #    path_qs = urlparse.parse_qs(path_qs)
 #  {'/?code': ['707b065d026b365303b2']} 
     if '/?code' in path_qs:
-        code = path_qs['/?code'][0]
+        code = path_qs['/?code']
         payload = {
             'client_id': GH_CLIENT_ID,
             'client_secret': GH_CLIENT_SECRET,
