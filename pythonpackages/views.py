@@ -2,10 +2,10 @@ from pyramid.httpexceptions import HTTPFound
 from pyramid.security import authenticated_userid
 from pyramid.security import forget
 from pyramid.security import remember
-try:  # Py3
-    from urllib import parse as urlparse
-except:  # Py2
-    import urlparse
+#try:  # Py3
+#    from urllib import parse as urlparse
+#except:  # Py2
+#    import urlparse
 import os
 import requests
 
@@ -33,9 +33,10 @@ def root(request):
     user = authenticated_userid(request)
     user_info = None
     path_qs = request.path_qs
-    path_qs = urlparse.parse_qs(path_qs)
-    if 'code' in path_qs:
-        code = path_qs['code']
+#    path_qs = urlparse.parse_qs(path_qs)
+#  {'/?code': ['707b065d026b365303b2']} 
+    if '/?code' in path_qs:
+        code = path_qs['/?code'][0]
         payload = {
             'client_id': GH_CLIENT_ID,
             'client_secret': GH_CLIENT_SECRET,
