@@ -75,6 +75,8 @@
       </div>
     </div>
 
+    ${userinfo}
+
     <%block name="content">
     <div class="container">
       <!-- Example row of columns -->
