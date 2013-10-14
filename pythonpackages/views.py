@@ -15,9 +15,9 @@ API_GH_USER = 'https://api.github.com/user?%s'
 GH_CLIENT_ID = os.environ.get('GITHUB_CLIENT_ID', '')
 GH_CLIENT_SECRET = os.environ.get('GITHUB_CLIENT_SECRET', '')
 
-GH_LOGIN_OAUTH_AUTH = 'https://github.com/login/oauth/authorize?client_id=%s' % (
+GH_LOGIN_AUTH = 'https://github.com/login/oauth/authorize?client_id=%s' % (
     GH_CLIENT_ID)
-GH_LOGIN_OAUTH_TOKEN = 'https://github.com/login/oauth/access_token'
+GH_LOGIN_TOKEN = 'https://github.com/login/oauth/access_token'
 
 
 def logout(request):
@@ -40,15 +40,15 @@ def root(request):
                 'code': code,
             }
             access_token = requests.post(
-                GH_LOGIN_OAUTH_TOKEN, data=payload).content
+                GH_LOGIN_TOKEN, data=payload).content
             access_token = requests.get(
                 API_GH_USER % access_token).content
             headers = remember(request, userid)
             return HTTPFound(location="/", headers=headers)
     else:
-        HTTPFound(location=GH_LOGIN_OAUTH_AUTH) 
+        HTTPFound(location=GH_LOGIN_AUTH) 
 
     return {
         'userid': userid,
-        'auth_url': GH_LOGIN_OAUTH_AUTH,
+        'auth_url': GH_LOGIN_AUTH,
     }
