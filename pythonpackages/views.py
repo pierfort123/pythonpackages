@@ -20,12 +20,6 @@ GH_LOGIN_OAUTH_AUTH = 'https://github.com/login/oauth/authorize?client_id=%s' % 
 GH_LOGIN_OAUTH_TOKEN = 'https://github.com/login/oauth/access_token'
 
 
-def about(request):
-    return {}
-
-def contact(request):
-    return {}
-
 def logout(request):
     """
     """
