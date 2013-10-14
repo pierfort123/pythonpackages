@@ -46,9 +46,6 @@ def root(request):
                 API_GH_USER % access_token).content
             headers = remember(request, user)
             return HTTPFound(location="/", headers=headers)
-    else:
-        HTTPFound(location=GH_LOGIN_AUTH) 
-
     return {
         'user': user,
         'auth_url': GH_LOGIN_AUTH,

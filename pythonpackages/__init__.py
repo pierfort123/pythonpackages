@@ -2,16 +2,6 @@ from pyramid.config import Configurator
 from .store import redis
 
 
-def root(request):
-    """
-    """
-    redis.set('test', 42)
-    return {
-        'test': redis.get('test')
-
-    }
-
-
 def main(global_config, **settings):
     """
     """

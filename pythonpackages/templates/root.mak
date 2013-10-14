@@ -83,6 +83,8 @@
       </div>
     </div>
 
+    ${user}
+
     <%block name="content">
     <div class="container">
       <!-- Example row of columns -->
