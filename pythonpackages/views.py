@@ -10,12 +10,14 @@ import os
 import requests
 
 
-GITHUB_CLIENT_ID = os.environ.get('GITHUB_CLIENT_ID', '')
-GITHUB_CLIENT_SECRET = os.environ.get('GITHUB_CLIENT_SECRET', '')
-GITHUB_URL_AUTH = 'https://github.com/login/oauth/authorize?client_id=%s' % (
-    GITHUB_CLIENT_ID)
-GITHUB_URL_AUTH_TOKEN = 'https://github.com/login/oauth/access_token'
-GITHUB_URL_USER = 'https://api.github.com/user?%s'
+API_GH_USER = 'https://api.github.com/user?%s'
+
+GH_CLIENT_ID = os.environ.get('GH_CLIENT_ID', '')
+GH_CLIENT_SECRET = os.environ.get('GH_CLIENT_SECRET', '')
+
+GH_LOGIN_OAUTH_AUTH = 'https://github.com/login/oauth/authorize?client_id=%s' % (
+    GH_CLIENT_ID)
+GH_LOGIN_OAUTH_TOKEN = 'https://github.com/login/oauth/access_token'
 
 
 def about(request):
@@ -39,20 +41,20 @@ def root(request):
         if 'code' in path_qs:
             code = path_qs['code']
             payload = {
-                'client_id': GITHUB_CLIENT_ID,
-                'client_secret': GITHUB_CLIENT_SECRET,
+                'client_id': GH_CLIENT_ID,
+                'client_secret': GH_CLIENT_SECRET,
                 'code': code,
             }
             access_token = requests.post(
-                GITHUB_URL_AUTH_TOKEN, data=payload).content
+                GH_LOGIN_OAUTH_TOKEN, data=payload).content
             access_token = requests.get(
-                GITHUB_URL_USER % access_token).content
+                API_GH_USER % access_token).content
             headers = remember(request, userid)
             return HTTPFound(location="/", headers=headers)
     else:
-        HTTPFound(location=GITHUB_URL_AUTH) 
+        HTTPFound(location=GH_LOGIN_OAUTH_AUTH) 
 
     return {
         'userid': userid,
-        'auth_url': GITHUB_URL_AUTH,
+        'auth_url': GH_LOGIN_OAUTH_AUTH,
     }
