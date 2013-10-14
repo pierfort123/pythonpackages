@@ -75,7 +75,7 @@
       </div>
     </div>
 
-    ${userinfo}
+    ${user_info}
 
     <%block name="content">
     <div class="container">
