@@ -29,6 +29,7 @@ def logout(request):
 def root(request):
     """
     """
+    user = authenticated_userid(request)
     path_qs = request.path_qs
     path_qs = urlparse.parse_qs(path_qs)
     if path_qs:
@@ -41,14 +42,14 @@ def root(request):
             }
             access_token = requests.post(
                 GH_LOGIN_TOKEN, data=payload).content
-            access_token = requests.get(
+            userinfo = requests.get(
                 API_GH_USER % access_token).content
-            headers = remember(request, userid)
+            headers = remember(request, user)
             return HTTPFound(location="/", headers=headers)
     else:
         HTTPFound(location=GH_LOGIN_AUTH) 
 
     return {
-        'userid': userid,
+        'user': user,
         'auth_url': GH_LOGIN_AUTH,
     }
