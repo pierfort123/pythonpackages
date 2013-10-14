@@ -21,12 +21,16 @@ GITHUB_URL_USER = 'https://api.github.com/user?%s'
 def about(request):
     return {}
 
-
 def contact(request):
     return {}
 
+def logout(request):
+    """
+    """
+    headers = forget(request)
+    return HTTPFound(location="/", headers=headers)
 
-def login(request):
+def root(request):
     """
     """
     path_qs = request.path_qs
@@ -50,18 +54,5 @@ def login(request):
 
     return {
         'userid': userid,
-    }
-
-def logout(request):
-    """
-    """
-    headers = forget(request)
-    return HTTPFound(location="/", headers=headers)
-
-
-def root(request):
-    """
-    """
-    return {
         'auth_url': GITHUB_URL_AUTH,
     }
