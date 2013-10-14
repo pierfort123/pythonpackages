@@ -34,21 +34,20 @@ def root(request):
     user_info = None
     path_qs = request.path_qs
     path_qs = urlparse.parse_qs(path_qs)
-    if path_qs:
-        if 'code' in path_qs:
-            code = path_qs['code']
-            payload = {
-                'client_id': GH_CLIENT_ID,
-                'client_secret': GH_CLIENT_SECRET,
-                'code': code,
-            }
-            access_token = requests.post(
-                GH_LOGIN_TOKEN, data=payload).content
-            user_info = requests.get(
-                API_GH_USER % access_token).content
-            headers = remember(request, user)
-            return HTTPFound(location="/", headers=headers)
+    if 'code' in path_qs:
+        code = path_qs['code']
+        payload = {
+            'client_id': GH_CLIENT_ID,
+            'client_secret': GH_CLIENT_SECRET,
+            'code': code,
+        }
+        access_token = requests.post(
+            GH_LOGIN_TOKEN, data=payload).content
+        user_info = requests.get(
+            API_GH_USER % access_token).content
+        headers = remember(request, user)
+        return HTTPFound(location="/", headers=headers)
     return {
-        'user_info': user_info,
+        'user_info': path_qs,
         'auth_url': GH_LOGIN_AUTH,
     }
