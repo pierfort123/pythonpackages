@@ -60,7 +60,7 @@
             </li>
           </ul>
           <form class="navbar-form navbar-right">
-            <button type="submit" class="btn btn-success"><a href="${auth_url}">Sign in</a></button>
+            <button type="submit" class="btn btn-success"><a style="color: white" href="${auth_url}">Sign in</a></button>
           </form>
         </div><!--/.navbar-collapse -->
       </div>
