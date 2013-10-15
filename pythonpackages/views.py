@@ -25,6 +25,12 @@ GH_LOGIN_TOKEN = 'https://github.com/login/oauth/access_token'
 
 NOW = '%m/%d/%Y'
 
+PAYLOAD = {
+    'client_id': GH_CLIENT_ID,
+    'client_secret': GH_CLIENT_SECRET,
+    'code': None,
+}
+
 TEMPLATE_VARS = {
     'auth_url': GH_LOGIN_AUTH,
     'user': None,
@@ -55,11 +61,8 @@ def root(request):
     path_qs = urlparse.parse_qs(path_qs)
     if '/?code' in path_qs:
         code = path_qs['/?code'][0]
-        payload = {
-            'client_id': GH_CLIENT_ID,
-            'client_secret': GH_CLIENT_SECRET,
-            'code': code,
-        }
+        payload = PAYLOAD
+        payload['code'] = code
         access_token = requests.post(
             GH_LOGIN_TOKEN, data=payload).content
         access_token = access_token.decode()
