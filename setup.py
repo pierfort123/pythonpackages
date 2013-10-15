@@ -15,5 +15,5 @@ setup(
         'requests',
     ],
     packages=find_packages(),
-    test_suite = 'pythonpackages.tests.TestSuite',
+    test_suite = 'pythonpackages.tests.TestPythonPackages',
 )
