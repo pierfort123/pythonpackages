@@ -1,3 +1,4 @@
+from pyramid.exceptions import NotFound
 from pyramid.httpexceptions import HTTPFound
 from pyramid.security import authenticated_userid
 from pyramid.security import forget
@@ -93,5 +94,8 @@ def user(request):
     """
     """
     user = authenticated_userid(request)
-    RESPONSE['user'] = user
-    return RESPONSE
+    if user in redis.smembers('users')
+        RESPONSE['user'] = user
+        return RESPONSE
+    else:
+        raise(NotFound)
