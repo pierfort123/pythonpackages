@@ -6,6 +6,7 @@ try:  # Py3
     from urllib import parse as urlparse
 except:  # Py2
     import urlparse
+import datetime
 import os
 import json
 import requests
@@ -21,6 +22,8 @@ GH_LOGIN_AUTH = 'https://github.com/login/oauth/authorize?client_id=%s' % (
     GH_CLIENT_ID)
 
 GH_LOGIN_TOKEN = 'https://github.com/login/oauth/access_token'
+
+NOW = '%m/%d/%Y'
 
 TEMPLATE_VARS = {
     'auth_url': GH_LOGIN_AUTH,
@@ -41,7 +44,8 @@ def logout(request):
     """
     user = authenticated_userid(request)
     headers = forget(request)
-    redis.lpush('logged_in', '%s logged out' % user)
+    now = datetime.datetime.now()
+    redis.lpush('logged_in', '%s %s logged out' % (now.strftime(NOW), user))
     return HTTPFound(location="/", headers=headers)
 
 
@@ -68,7 +72,9 @@ def root(request):
         if 'login' in user_info:
             login = user_info['login']
         headers = remember(request, login)
-        redis.lpush('logged_in', '%s logged in' % login)
+        now = datetime.datetime.now()
+        redis.lpush(
+            'logged_in', '%s %s logged in' % (now.strftime(NOW), login))
         return HTTPFound(location="/", headers=headers)
     TEMPLATE_VARS['user'] = user
     return TEMPLATE_VARS
