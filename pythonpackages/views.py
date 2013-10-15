@@ -31,7 +31,7 @@ PAYLOAD = {
     'code': None,
 }
 
-TEMPLATE_VARS = {
+TEMPLATE_VARIABLES = {
     'auth_url': GH_LOGIN_AUTH,
     'user': None,
 }
@@ -41,8 +41,8 @@ def about(request):
     """
     """
     user = authenticated_userid(request)
-    TEMPLATE_VARS['user'] = user
-    return TEMPLATE_VARS
+    TEMPLATE_VARIABLES['user'] = user
+    return TEMPLATE_VARIABLES
 
 
 def logout(request):
@@ -83,14 +83,14 @@ def root(request):
             'logged_in', '%s logged in <%s>' % (login, now.strftime(NOW)))
 
         return HTTPFound(location="/", headers=headers)
-    TEMPLATE_VARS['logged_in'] = logged_in
-    TEMPLATE_VARS['user'] = user
-    return TEMPLATE_VARS
+    TEMPLATE_VARIABLES['logged_in'] = logged_in
+    TEMPLATE_VARIABLES['user'] = user
+    return TEMPLATE_VARIABLES
 
 
 def user(request):
     """
     """
     user = authenticated_userid(request)
-    TEMPLATE_VARS['user'] = user
-    return TEMPLATE_VARS
+    TEMPLATE_VARIABLES['user'] = user
+    return TEMPLATE_VARIABLES
