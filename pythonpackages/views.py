@@ -32,7 +32,7 @@ def logout(request):
 def root(request):
     """
     """
-    access_token, code, user_info = None, None, None, None
+    access_token, code, user_info = None, None, None
     user = authenticated_userid(request)
     path_qs = request.path_qs
     path_qs = urlparse.parse_qs(path_qs)
