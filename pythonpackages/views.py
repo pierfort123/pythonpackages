@@ -93,7 +93,7 @@ def root(request):
 def user(request):
     """
     """
-    user = authenticated_userid(request)
+    user = request.path_qs.strip('/')
     if user in [i.decode() for i in redis.smembers('users')]:
         RESPONSE['user'] = user
         return RESPONSE
