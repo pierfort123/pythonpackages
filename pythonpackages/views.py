@@ -30,6 +30,7 @@ def logout(request):
 def root(request):
     """
     """
+    code = None
     user = authenticated_userid(request)
     user_info = None
     path_qs = request.path_qs
