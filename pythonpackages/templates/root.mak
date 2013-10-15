@@ -89,9 +89,9 @@
       <div class="row">
         <div class="col-lg-4">
           <h2>Activity</h2>
-          <ul>
+          <ul class="list-unstyled">
           % for entry in logged_in:
-            <li>${entry}</li>
+            <li>${entry.decode()}</li>
           % endfor
           </ul>
         </div>
