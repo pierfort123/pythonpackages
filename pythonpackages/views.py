@@ -31,7 +31,7 @@ PAYLOAD = {
     'code': None,
 }
 
-TEMPLATE_CONFIG = {
+RESPONSE = {
     'auth_url': GH_LOGIN_AUTH,
     'user': None,
 }
@@ -41,8 +41,8 @@ def about(request):
     """
     """
     user = authenticated_userid(request)
-    TEMPLATE_CONFIG['user'] = user
-    return TEMPLATE_CONFIG
+    RESPONSE['user'] = user
+    return RESPONSE
 
 
 def logout(request):
@@ -83,14 +83,14 @@ def root(request):
             'logged_in', '%s logged in <%s>' % (login, now.strftime(NOW)))
 
         return HTTPFound(location="/", headers=headers)
-    TEMPLATE_CONFIG['logged_in'] = logged_in
-    TEMPLATE_CONFIG['user'] = user
-    return TEMPLATE_CONFIG
+    RESPONSE['logged_in'] = logged_in
+    RESPONSE['user'] = user
+    return RESPONSE
 
 
 def user(request):
     """
     """
     user = authenticated_userid(request)
-    TEMPLATE_CONFIG['user'] = user
-    return TEMPLATE_CONFIG
+    RESPONSE['user'] = user
+    return RESPONSE
