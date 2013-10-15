@@ -53,8 +53,8 @@ def root(request):
         if 'login' in user_info:
             login = user_info['login']
         headers = remember(request, login)
-#        return HTTPFound(location="/", headers=headers)
+        return HTTPFound(location="/", headers=headers)
     return {
-        'user': login,
+        'user': user,
         'auth_url': GH_LOGIN_AUTH,
     }
