@@ -34,7 +34,6 @@ def root(request):
     user_info = None
     path_qs = request.path_qs
     path_qs = urlparse.parse_qs(path_qs)
-#  {'/?code': ['707b065d026b365303b2']} 
     if '/?code' in path_qs:
         code = path_qs['/?code'][0]
         payload = {
@@ -47,8 +46,8 @@ def root(request):
         user_info = requests.get(
             API_GH_USER % access_token).content
         headers = remember(request, user)
-        return HTTPFound(location="/", headers=headers)
+#        return HTTPFound(location="/", headers=headers)
     return {
-        'user_info': user_info,
+        'user_info': code,
         'auth_url': GH_LOGIN_AUTH,
     }
