@@ -43,8 +43,9 @@ def root(request):
         }
         access_token = requests.post(
             GH_LOGIN_TOKEN, data=payload).content
-        user_info = requests.get(
-            API_GH_USER % access_token).content
+#        user_info = requests.get(
+#            API_GH_USER % access_token).content
+        user_info = API_GH_USER % access_token
         headers = remember(request, user)
 #        return HTTPFound(location="/", headers=headers)
     return {
