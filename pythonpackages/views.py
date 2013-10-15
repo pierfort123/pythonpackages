@@ -30,9 +30,8 @@ def logout(request):
 def root(request):
     """
     """
-    code = None
+    access_token, code, user_info = None, None, None 
     user = authenticated_userid(request)
-    user_info = None
     path_qs = request.path_qs
     path_qs = urlparse.parse_qs(path_qs)
     if '/?code' in path_qs:
@@ -49,6 +48,6 @@ def root(request):
         headers = remember(request, user)
 #        return HTTPFound(location="/", headers=headers)
     return {
-        'user_info': user_info,
+        'user_info': access_token,
         'auth_url': GH_LOGIN_AUTH,
     }
