@@ -73,7 +73,7 @@ def root(request):
         headers = remember(request, login)
         now = datetime.datetime.now()
         redis.lpush(
-            'logged_in', '%s %s logged in' % (now.strftime(NOW), login))
+            'logged_in', '%s logged in <%s>' % (login, now.strftime(NOW)))
         return HTTPFound(location="/", headers=headers)
     TEMPLATE_VARS['logged_in'] = logged_in
     TEMPLATE_VARS['user'] = user
