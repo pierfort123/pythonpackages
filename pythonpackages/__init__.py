@@ -22,7 +22,7 @@ def main(global_config, **settings):
     config = Configurator(
         authentication_policy=authentication_policy,
         authorization_policy=authorization_policy,
-        session_factory=session_factory
+        session_factory=session_factory,
         settings=settings,
         )
     config.add_route('root', '/')
