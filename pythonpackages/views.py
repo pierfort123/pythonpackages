@@ -7,6 +7,7 @@ try:  # Py3
 except:  # Py2
     import urlparse
 import os
+import json
 import requests
 
 
@@ -17,6 +18,7 @@ GH_CLIENT_SECRET = os.environ.get('GITHUB_CLIENT_SECRET', '')
 
 GH_LOGIN_AUTH = 'https://github.com/login/oauth/authorize?client_id=%s' % (
     GH_CLIENT_ID)
+
 GH_LOGIN_TOKEN = 'https://github.com/login/oauth/access_token'
 
 
@@ -30,7 +32,7 @@ def logout(request):
 def root(request):
     """
     """
-    access_token, code, user_info = None, None, None 
+    access_token, code, user_info = None, None, None, None
     user = authenticated_userid(request)
     path_qs = request.path_qs
     path_qs = urlparse.parse_qs(path_qs)
@@ -43,12 +45,13 @@ def root(request):
         }
         access_token = requests.post(
             GH_LOGIN_TOKEN, data=payload).content
-#        user_info = requests.get(
-#            API_GH_USER % access_token).content
-        user_info = API_GH_USER % access_token.decode()
-        headers = remember(request, user)
-#        return HTTPFound(location="/", headers=headers)
+        access_token = access_token.decode()
+        user_info = requests.get(
+            API_GH_USER % access_token).content
+        login = json.loads(user_info)['login']
+        headers = remember(request, login)
+        return HTTPFound(location="/", headers=headers)
     return {
-        'user_info': user_info,
+        'user': user,
         'auth_url': GH_LOGIN_AUTH,
     }
