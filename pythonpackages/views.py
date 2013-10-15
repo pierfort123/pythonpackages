@@ -23,7 +23,7 @@ GH_LOGIN_AUTH = 'https://github.com/login/oauth/authorize?client_id=%s' % (
 
 GH_LOGIN_TOKEN = 'https://github.com/login/oauth/access_token'
 
-NOW = '%m/%d/%Y'
+NOW = '%m/%d/%y'
 
 PAYLOAD = {
     'client_id': GH_CLIENT_ID,
