@@ -60,7 +60,11 @@
             </li>
           </ul>
           <form class="navbar-form navbar-right">
+            % if not user:
             <a class="btn btn-success" style="color: white" href="${auth_url}">Sign in</a>
+            % else:
+            <a class="btn btn-success" style="color: white" href="/logout">Sign out ${user}</a>
+            % endif
           </form>
         </div><!--/.navbar-collapse -->
       </div>
