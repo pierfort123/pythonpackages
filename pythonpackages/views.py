@@ -60,11 +60,9 @@ def root(request):
     path_qs = request.path_qs
     path_qs = urlparse.parse_qs(path_qs)
     if '/?code' in path_qs:
-        code = path_qs['/?code'][0]
-        payload = PAYLOAD
-        payload['code'] = code
+        PAYLOAD['code'] = path_qs['/?code'][0]
         access_token = requests.post(
-            GH_LOGIN_TOKEN, data=payload).content
+            GH_LOGIN_TOKEN, data=PAYLOAD).content
         access_token = access_token.decode()
         user_info = requests.get(
             API_GH_USER % access_token).content
