@@ -81,6 +81,7 @@ def root(request):
         now = datetime.datetime.now()
         redis.lpush(
             'logged_in', '%s logged in <%s>' % (login, now.strftime(NOW)))
+        redis.sadd('users', login)
 
         return HTTPFound(location="/", headers=headers)
     RESPONSE['logged_in'] = logged_in
