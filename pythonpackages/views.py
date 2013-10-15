@@ -51,6 +51,7 @@ def root(request):
     """
     """
     user = authenticated_userid(request)
+    logged_in = redis.lrange('logged_in', 0, 5)
     path_qs = request.path_qs
     path_qs = urlparse.parse_qs(path_qs)
     if '/?code' in path_qs:
@@ -74,6 +75,7 @@ def root(request):
         redis.lpush(
             'logged_in', '%s %s logged in' % (now.strftime(NOW), login))
         return HTTPFound(location="/", headers=headers)
+    TEMPLATE_VARS['logged_in'] = logged_in
     TEMPLATE_VARS['user'] = user
     return TEMPLATE_VARS
 
