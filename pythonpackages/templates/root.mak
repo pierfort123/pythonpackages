@@ -43,6 +43,7 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
+            <%block name="nav">
             <li class="active"><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/contact">Contact</a></li>
@@ -58,6 +59,7 @@
                 <li><a href="#">One more separated link</a></li>
               </ul>
             </li>
+            </%block>
           </ul>
           <form class="navbar-form navbar-right">
             % if not user:
@@ -73,15 +75,17 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
+        <%block name="jumbotron">
         <h1>Hello, Python Programmers!</h1>
         <p>Python Packages connects your GitHub account to the Python Package Index to make publishing Python software easier and more fun.</p>
         <p><a href="/about" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+        </%block>
       </div>
     </div>
 
-    <%block name="content">
     <div class="container">
       <!-- Example row of columns -->
+      <%block name="content">
       <div class="row">
         <div class="col-lg-4">
           <h2>Heading</h2>

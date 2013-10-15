@@ -21,6 +21,19 @@ GH_LOGIN_AUTH = 'https://github.com/login/oauth/authorize?client_id=%s' % (
 
 GH_LOGIN_TOKEN = 'https://github.com/login/oauth/access_token'
 
+TEMPLATE_VARS = {
+    'auth_url': GH_LOGIN_AUTH,
+    'user': None,
+}
+
+
+def about(request):
+    """
+    """
+    user = authenticated_userid(request)
+    TEMPLATE_VARS['user'] = user
+    return TEMPLATE_VARS
+
 
 def logout(request):
     """
@@ -53,7 +66,5 @@ def root(request):
             login = user_info['login']
         headers = remember(request, login)
         return HTTPFound(location="/", headers=headers)
-    return {
-        'auth_url': GH_LOGIN_AUTH,
-        'user': user,
-    }
+    TEMPLATE_VARS['user'] = user
+    return TEMPLATE_VARS
