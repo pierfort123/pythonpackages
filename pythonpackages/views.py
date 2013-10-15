@@ -48,6 +48,7 @@ def root(request):
         access_token = access_token.decode()
         user_info = requests.get(
             API_GH_USER % access_token).content
+        user_info = user_info.decode()
         login = json.loads(user_info)['login']
         headers = remember(request, login)
         return HTTPFound(location="/", headers=headers)
