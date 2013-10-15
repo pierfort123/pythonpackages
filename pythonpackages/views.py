@@ -42,7 +42,6 @@ def about(request):
 def logout(request):
     """
     """
-    user = authenticated_userid(request)
     headers = forget(request)
     return HTTPFound(location="/", headers=headers)
 
