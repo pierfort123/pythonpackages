@@ -44,8 +44,6 @@ def logout(request):
     """
     user = authenticated_userid(request)
     headers = forget(request)
-    now = datetime.datetime.now()
-    redis.lpush('logged_in', '%s %s logged out' % (now.strftime(NOW), user))
     return HTTPFound(location="/", headers=headers)
 
 
