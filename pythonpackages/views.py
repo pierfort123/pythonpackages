@@ -61,19 +61,24 @@ def root(request):
     path_qs = urlparse.parse_qs(path_qs)
     if '/?code' in path_qs:
         PAYLOAD['code'] = path_qs['/?code'][0]
+
         access_token = requests.post(
             GH_LOGIN_TOKEN, data=PAYLOAD).content
         access_token = access_token.decode()
+
         user_info = requests.get(
             API_GH_USER % access_token).content
         user_info = user_info.decode()
         user_info = json.loads(user_info)
+
         if 'login' in user_info:
             login = user_info['login']
         headers = remember(request, login)
+
         now = datetime.datetime.now()
         redis.lpush(
             'logged_in', '%s logged in <%s>' % (login, now.strftime(NOW)))
+
         return HTTPFound(location="/", headers=headers)
     TEMPLATE_VARS['logged_in'] = logged_in
     TEMPLATE_VARS['user'] = user
