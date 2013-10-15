@@ -3,6 +3,8 @@ from pyramid.httpexceptions import HTTPFound
 from pyramid.security import authenticated_userid
 from pyramid.security import forget
 from pyramid.security import remember
+from .utils import link_user
+from . import redis
 try:  # Py3
     from urllib import parse as urlparse
 except:  # Py2
@@ -11,7 +13,6 @@ import datetime
 import os
 import json
 import requests
-from . import redis
 
 
 API_GH_USER = 'https://api.github.com/user?%s'
@@ -85,6 +86,7 @@ def root(request):
         redis.sadd('users', login)
 
         return HTTPFound(location="/", headers=headers)
+    RESPONSE['link_user'] = link_user
     RESPONSE['logged_in'] = logged_in
     RESPONSE['user'] = user
     return RESPONSE
