@@ -47,6 +47,7 @@ def about(request):
 
 def logout(request):
     """
+    Trigger authtkt machinery to forget current user 
     """
     headers = forget(request)
     return HTTPFound(location="/", headers=headers)
@@ -54,6 +55,8 @@ def logout(request):
 
 def root(request):
     """
+    Handle sign-ins; process callbacks from GitHub and log activity
+    to database
     """
     user = authenticated_userid(request)
     logged_in = redis.lrange('logged_in', 0, 5)
