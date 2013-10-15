@@ -2,6 +2,8 @@ from pyramid.authentication import AuthTktAuthenticationPolicy
 from pyramid.authorization import ACLAuthorizationPolicy
 from pyramid.config import Configurator
 from pyramid_redis_sessions import session_factory_from_settings
+from pyramid.security import Allow
+from pyramid.security import Authenticated
 import os
 import redis
 
@@ -9,6 +11,20 @@ auth_secret = os.getenv('AUTH_POLICY_SECRET', '')
 redis_url = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
 redis_secret = os.getenv('REDIS_SESSIONS_SECRET', '')
 redis = redis.from_url(redis_url)
+
+
+class Root(object):
+    """
+    """
+
+    __acl__ = [
+       (Allow, Authenticated, 'logged_in')
+    ]
+
+    def __init__(self, request):
+        """
+        """
+        self.request = request
 
 
 def main(global_config, **settings):
@@ -22,6 +38,7 @@ def main(global_config, **settings):
     config = Configurator(
         authentication_policy=authentication_policy,
         authorization_policy=authorization_policy,
+        root_factory=Root,
         session_factory=session_factory,
         settings=settings,
         )
