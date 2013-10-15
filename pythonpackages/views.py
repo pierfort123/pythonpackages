@@ -9,6 +9,7 @@ except:  # Py2
 import os
 import json
 import requests
+from . import redis
 
 
 API_GH_USER = 'https://api.github.com/user?%s'
@@ -38,7 +39,9 @@ def about(request):
 def logout(request):
     """
     """
+    user = authenticated_userid(request)
     headers = forget(request)
+    redis.lpush('logged_in', '%s logged out' % user)
     return HTTPFound(location="/", headers=headers)
 
 
@@ -65,6 +68,15 @@ def root(request):
         if 'login' in user_info:
             login = user_info['login']
         headers = remember(request, login)
+        redis.lpush('logged_in', '%s logged in' % login)
         return HTTPFound(location="/", headers=headers)
+    TEMPLATE_VARS['user'] = user
+    return TEMPLATE_VARS
+
+
+def user(request):
+    """
+    """
+    user = authenticated_userid(request)
     TEMPLATE_VARS['user'] = user
     return TEMPLATE_VARS
