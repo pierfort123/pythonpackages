@@ -49,6 +49,6 @@ def root(request):
         headers = remember(request, user)
         return HTTPFound(location="/", headers=headers)
     return {
-        'user_info': path_qs,
+        'user_info': user_info,
         'auth_url': GH_LOGIN_AUTH,
     }
