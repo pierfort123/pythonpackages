@@ -91,7 +91,7 @@
           <h2>Activity</h2>
           <ul class="list-unstyled">
           % for entry in logged_in:
-            <li>${entry.decode()}</li>
+            <li><span class="glyphicon glyphicon-user"></span>${entry.decode()}</li>
           % endfor
           </ul>
         </div>
