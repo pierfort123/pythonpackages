@@ -55,8 +55,7 @@ def main(global_config, **settings):
     config.add_route('logout', '/logout')
     config.add_view(
         'pythonpackages.views.logout',
-        route_name='logout',
-        renderer='pythonpackages:templates/logout.mak')
+        route_name='logout')
     config.add_route('user', '/{user}')
     config.add_view(
         'pythonpackages.views.user',
