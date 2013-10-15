@@ -59,7 +59,7 @@ def root(request):
     to database
     """
     user = authenticated_userid(request)
-    logged_in = redis.lrange('logged_in', 0, 5)
+    logged_in = redis.lrange('logged_in', 0, 4)
     path_qs = request.path_qs
     path_qs = urlparse.parse_qs(path_qs)
     if '/?code' in path_qs:
