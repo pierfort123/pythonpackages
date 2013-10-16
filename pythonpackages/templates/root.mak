@@ -61,11 +61,19 @@
             </li>
             </%block>
           </ul>
-          <form class="navbar-form navbar-right">
+          <form class="navbar-right">
             % if not user:
             <a class="btn btn-success" style="color: white" href="${auth_url}">Sign in</a>
             % else:
-            <a class="btn btn-success" style="color: white" href="/logout">Sign out ${user}</a>
+            <ul class="list-unstyled">
+                <li class="dropdown">
+                    <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" style="color: white" href="#">${user}</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="${user}">View profile</a></li>
+                        <li><a href="/logout">Sign out</a></li>
+                    </ul>
+                </li>
+            </ul>
             % endif
           </form>
         </div><!--/.navbar-collapse -->
