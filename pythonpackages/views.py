@@ -98,7 +98,7 @@ def user(request):
     """
     user = request.path_qs.strip('/')
     if user in [i.decode() for i in redis.smembers('users')]:
-        response['auth_url'] = PYPI_ACCESS_TOKEN
+        response['access_token'] = PYPI_ACCESS_TOKEN
         response['user'] = user
         return response
     else:
