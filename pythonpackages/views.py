@@ -33,6 +33,8 @@ PAYLOAD = {
     'code': None,
 }
 
+PYPI_LOGIN_AUTH = 'https://pypi.python.org/oauth/access_token'
+
 RESPONSE = {
     'auth_url': GH_LOGIN_AUTH,
     'user': None,
@@ -97,6 +99,7 @@ def user(request):
     """
     user = request.path_qs.strip('/')
     if user in [i.decode() for i in redis.smembers('users')]:
+        RESPONSE['auth_url'] = PYPI_LOGIN_AUTH
         RESPONSE['user'] = user
         return RESPONSE
     else:
