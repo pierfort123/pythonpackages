@@ -2,6 +2,9 @@ from pyramid import testing
 import unittest
 
 
+LOGGED_IN_ENTRY = "<a href='/aclark4life'>aclark4life</a> logged in 10/13/13"
+
+
 class PythonPackagesTests(unittest.TestCase):
     def setUp(self):
         """
@@ -22,3 +25,8 @@ class PythonPackagesTests(unittest.TestCase):
         self.assertTrue('user' in result)
         self.assertEqual(request.response.headerlist[0],
                          ('Content-Type', 'text/html; charset=UTF-8'))
+
+    def test_link_user(self):
+        from pythonpackages.utils import link_user
+        logged_in_entry = link_user('aclark4life logged in 10/13/13')
+        assert logged_in_entry == LOGGED_IN_ENTRY
