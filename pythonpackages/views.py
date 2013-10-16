@@ -77,6 +77,7 @@ def callback_github(request):
         redis.sadd('users', login)
 
         return HTTPFound(location="/", headers=headers)
+    raise(NotFound)  # No query string, nothing to see here
 
 
 def callback_pypi():
