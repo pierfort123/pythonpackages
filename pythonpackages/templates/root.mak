@@ -67,7 +67,7 @@
             % else:
             <ul class="list-unstyled">
                 <li class="dropdown">
-                    <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" style="color: white" href="#">${user}</a>
+                    <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" style="color: white" href="#">${user} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="${user}">View profile</a></li>
                         <li><a href="/logout">Sign out</a></li>
