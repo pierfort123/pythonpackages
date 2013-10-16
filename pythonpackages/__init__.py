@@ -13,6 +13,12 @@ redis_secret = os.getenv('REDIS_SESSIONS_SECRET', '')
 redis = redis.from_url(redis_url)
 
 
+class UserFactory(object):
+    @property
+    def __acl__(self):
+        return []
+
+
 def main(global_config, **settings):
     """
     """
@@ -48,11 +54,15 @@ def main(global_config, **settings):
         'pythonpackages.views.root',
         route_name='root',
         renderer='pythonpackages:templates/root.mak')
+
     config.add_route('logout', '/logout')
     config.add_view(
         'pythonpackages.views.logout',
         route_name='logout')
-    config.add_route('user', '/{user}')
+
+    config.add_route('user', '/{user}',
+        factory=UserFactory,
+    )
     config.add_view(
         'pythonpackages.views.user',
         route_name='user',
