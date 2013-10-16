@@ -6,12 +6,8 @@ from pyramid.security import Allow
 from pyramid.security import Authenticated
 from .utils import get_user
 from .db import redis
-from .db import redis_secret
 from .db import redis_url
 import os
-
-
-auth_secret = os.getenv('AUTH_POLICY_SECRET', '')
 
 
 class UserFactory(object):
@@ -23,8 +19,10 @@ class UserFactory(object):
 def main(global_config, **settings):
     """
     """
+    auth_secret = os.getenv('AUTH_POLICY_SECRET', '')
     authentication_policy = AuthTktAuthenticationPolicy(auth_secret)
     authorization_policy = ACLAuthorizationPolicy()
+    redis_secret = os.getenv('REDIS_SESSIONS_SECRET', '')
     settings['redis.sessions.secret'] = redis_secret
     settings['redis.sessions.url'] = redis_url
     session_factory = session_factory_from_settings(settings)
