@@ -3,7 +3,7 @@ LINK_USER = "<a href='/%s'>%s</a> %s"
 
 def link_user(logged_in_entry):
     """
-    Takes a string e.g. `aclark4life logged in 10/13/13` and returns
+    Take a string e.g. `aclark4life logged in 10/13/13` and return
     `<a href="/aclark4life">aclark4life</a> logged in 10/13/13`
     """
     parts = logged_in_entry.split()
