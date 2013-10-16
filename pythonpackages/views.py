@@ -88,7 +88,7 @@ def root(request):
         return HTTPFound(location="/", headers=headers)
     RESPONSE['link_user'] = link_user
     RESPONSE['logged_in'] = logged_in
-    RESPONSE['user'] = 'aclark4life'
+    RESPONSE['user'] = user
     return RESPONSE
 
 
