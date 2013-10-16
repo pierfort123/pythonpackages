@@ -27,14 +27,13 @@ GH_LOGIN_TOKEN = 'https://github.com/login/oauth/access_token'
 
 NOW = '%m/%d/%y'
 
+PYPI_LOGIN_AUTH = 'https://pypi.python.org/oauth/access_token'
+
 payload = {
     'client_id': GH_CLIENT_ID,
     'client_secret': GH_CLIENT_SECRET,
     'code': None,
 }
-
-PYPI_LOGIN_AUTH = 'https://pypi.python.org/oauth/access_token'
-
 response = {
     'auth_url': GH_LOGIN_AUTH,
     'user': None,
