@@ -23,7 +23,7 @@ FORMAT = '%m/%d/%y'
 GH_CLIENT_ID = os.environ.get('GITHUB_CLIENT_ID', '')
 GH_CLIENT_SECRET = os.environ.get('GITHUB_CLIENT_SECRET', '')
 
-GH_AUTH = 'https://github.com/login/oauth/authorize?client_id=%s' % (
+GH_AUTH_URL = 'https://github.com/login/oauth/authorize?client_id=%s' % (
     GH_CLIENT_ID)
 
 GH_TOKEN_URL = 'https://github.com/login/oauth/access_token'
@@ -36,7 +36,7 @@ payload = {
     'code': None,
 }
 response = {
-    'auth_url': GH_AUTH,
+    'auth_url': GH_AUTH_URL,
     'user': None,
 }
 
