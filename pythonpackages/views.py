@@ -4,6 +4,7 @@ from pyramid.security import authenticated_userid
 from pyramid.security import forget
 from pyramid.security import remember
 from .db import db
+from .utils import get_user
 from .utils import link_user
 try:  # Py3
     from urllib import parse as urlparse
@@ -25,9 +26,9 @@ GH_CLIENT_SECRET = os.environ.get('GITHUB_CLIENT_SECRET', '')
 GH_AUTH = 'https://github.com/login/oauth/authorize?client_id=%s' % (
     GH_CLIENT_ID)
 
-GH_ACCESS_TOKEN = 'https://github.com/login/oauth/access_token'
+GH_TOKEN_URL = 'https://github.com/login/oauth/access_token'
 
-PYPI_ACCESS_TOKEN = 'https://pypi.python.org/oauth/access_token'
+PYPI_TOKEN_URL = 'https://pypi.python.org/oauth/access_token'
 
 payload = {
     'client_id': GH_CLIENT_ID,
@@ -59,7 +60,7 @@ def callback_github(request):
         payload['code'] = path_qs['/callback_github?code'][0]
 
         access_token = requests.post(
-            GH_ACCESS_TOKEN, data=payload).content
+            GH_TOKEN_URL, data=payload).content
         access_token = access_token.decode()
 
         user_info = requests.get(
@@ -107,8 +108,8 @@ def user(request):
     """
     """
     user = request.path_qs.strip('/')
-    if request.user: 
-        response['access_token'] = PYPI_ACCESS_TOKEN
+    if get_user(user)
+        response['access_token'] = PYPI_TOKEN_URL
         response['user'] = user
         return response
     else:
