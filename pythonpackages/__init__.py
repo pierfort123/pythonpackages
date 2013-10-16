@@ -47,6 +47,17 @@ def main(global_config, **settings):
         'pythonpackages.views.about',
         route_name='about',
         renderer='pythonpackages:templates/about.mak')
+
+    config.add_route('callback_github', '/callback_github')
+    config.add_view(
+        'pythonpackages.views.callback_github',
+        route_name='callback_github')
+
+    config.add_route('callback_pypi', '/callback_pypi')
+    config.add_view(
+        'pythonpackages.views.callback_pypi',
+        route_name='callback_pypi')
+
     config.add_route('root', '/')
     config.add_view(
         'pythonpackages.views.root',

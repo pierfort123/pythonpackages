@@ -48,21 +48,11 @@ def about(request):
     return response
 
 
-def logout(request):
-    """
-    Trigger authtkt machinery to forget current user 
-    """
-    headers = forget(request)
-    return HTTPFound(location="/", headers=headers)
-
-
-def root(request):
+def callback_github(request):
     """
     Handle sign-ins; process callbacks from GitHub and log activity
     to database
     """
-    user = authenticated_userid(request)
-    logged_in = redis.lrange('logged_in', 0, 4)
     path_qs = request.path_qs
     path_qs = urlparse.parse_qs(path_qs)
     if '/?code' in path_qs:
@@ -87,6 +77,25 @@ def root(request):
         redis.sadd('users', login)
 
         return HTTPFound(location="/", headers=headers)
+
+
+def callback_pypi():
+    """
+    """
+
+def logout(request):
+    """
+    Trigger authtkt machinery to forget current user 
+    """
+    headers = forget(request)
+    return HTTPFound(location="/", headers=headers)
+
+
+def root(request):
+    """
+    """
+    user = authenticated_userid(request)
+    logged_in = redis.lrange('logged_in', 0, 4)
     response['link_user'] = link_user
     response['logged_in'] = logged_in
     response['user'] = user
