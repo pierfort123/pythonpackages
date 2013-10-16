@@ -27,7 +27,7 @@ GH_LOGIN_TOKEN = 'https://github.com/login/oauth/access_token'
 
 NOW = '%m/%d/%y'
 
-PAYLOAD = {
+payload = {
     'client_id': GH_CLIENT_ID,
     'client_secret': GH_CLIENT_SECRET,
     'code': None,
@@ -35,7 +35,7 @@ PAYLOAD = {
 
 PYPI_LOGIN_AUTH = 'https://pypi.python.org/oauth/access_token'
 
-RESPONSE = {
+response = {
     'auth_url': GH_LOGIN_AUTH,
     'user': None,
 }
@@ -45,8 +45,8 @@ def about(request):
     """
     """
     user = authenticated_userid(request)
-    RESPONSE['user'] = user
-    return RESPONSE
+    response['user'] = user
+    return response
 
 
 def logout(request):
@@ -67,10 +67,10 @@ def root(request):
     path_qs = request.path_qs
     path_qs = urlparse.parse_qs(path_qs)
     if '/?code' in path_qs:
-        PAYLOAD['code'] = path_qs['/?code'][0]
+        payload['code'] = path_qs['/?code'][0]
 
         access_token = requests.post(
-            GH_LOGIN_TOKEN, data=PAYLOAD).content
+            GH_LOGIN_TOKEN, data=payload).content
         access_token = access_token.decode()
 
         user_info = requests.get(
@@ -88,10 +88,10 @@ def root(request):
         redis.sadd('users', login)
 
         return HTTPFound(location="/", headers=headers)
-    RESPONSE['link_user'] = link_user
-    RESPONSE['logged_in'] = logged_in
-    RESPONSE['user'] = user
-    return RESPONSE
+    response['link_user'] = link_user
+    response['logged_in'] = logged_in
+    response['user'] = user
+    return response
 
 
 def user(request):
@@ -99,8 +99,8 @@ def user(request):
     """
     user = request.path_qs.strip('/')
     if user in [i.decode() for i in redis.smembers('users')]:
-        RESPONSE['auth_url'] = PYPI_LOGIN_AUTH
-        RESPONSE['user'] = user
-        return RESPONSE
+        response['auth_url'] = PYPI_LOGIN_AUTH
+        response['user'] = user
+        return response
     else:
         raise(NotFound)
