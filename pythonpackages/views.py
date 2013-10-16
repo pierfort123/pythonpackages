@@ -3,8 +3,8 @@ from pyramid.httpexceptions import HTTPFound
 from pyramid.security import authenticated_userid
 from pyramid.security import forget
 from pyramid.security import remember
+from .db import redis
 from .utils import link_user
-from . import redis
 try:  # Py3
     from urllib import parse as urlparse
 except:  # Py2

@@ -4,13 +4,14 @@ from pyramid.config import Configurator
 from pyramid_redis_sessions import session_factory_from_settings
 from pyramid.security import Allow
 from pyramid.security import Authenticated
+from .utils import get_user
+from .db import redis
+from .db import redis_secret
+from .db import redis_url
 import os
-import redis
+
 
 auth_secret = os.getenv('AUTH_POLICY_SECRET', '')
-redis_url = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
-redis_secret = os.getenv('REDIS_SESSIONS_SECRET', '')
-redis = redis.from_url(redis_url)
 
 
 class UserFactory(object):
@@ -73,5 +74,7 @@ def main(global_config, **settings):
 
     config.include('pyramid_mako')
     config.include('pyramid_redis_sessions')
+
+    config.add_request_method(get_user, 'user', reify=True)
 
     return config.make_wsgi_app()
