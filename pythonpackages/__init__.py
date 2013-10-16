@@ -5,7 +5,6 @@ from pyramid_redis_sessions import session_factory_from_settings
 from pyramid.security import Allow
 from pyramid.security import Authenticated
 from .utils import get_user
-from .db import redis
 from .db import redis_url
 import os
 
