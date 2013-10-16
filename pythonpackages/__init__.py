@@ -60,8 +60,8 @@ def main(global_config, **settings):
         'pythonpackages.views.logout',
         route_name='logout')
 
-    config.add_route('user', '/{user}',
-        factory=UserFactory,
+    config.add_route(
+        'user', '/{user}', factory=UserFactory,
     )
     config.add_view(
         'pythonpackages.views.user',
