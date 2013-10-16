@@ -15,5 +15,5 @@ setup(
         'requests',
     ],
     packages=find_packages(),
-    test_suite = 'pythonpackages.tests.ViewIntegrationTests',
+    test_suite = 'pythonpackages.tests.PythonPackagesTests',
 )

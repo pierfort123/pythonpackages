@@ -2,7 +2,7 @@ from pyramid import testing
 import unittest
 
 
-class ViewIntegrationTests(unittest.TestCase):
+class PythonPackagesTests(unittest.TestCase):
     def setUp(self):
         """
         """
