@@ -55,8 +55,8 @@ def callback_github(request):
     """
     path_qs = request.path_qs
     path_qs = urlparse.parse_qs(path_qs)
-    if '/?code' in path_qs:
-        payload['code'] = path_qs['/?code'][0]
+    if '/callback_github?code' in path_qs:
+        payload['code'] = path_qs['/callback_github?code'][0]
 
         access_token = requests.post(
             GH_ACCESS_TOKEN, data=payload).content
