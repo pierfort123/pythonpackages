@@ -13,20 +13,6 @@ redis_secret = os.getenv('REDIS_SESSIONS_SECRET', '')
 redis = redis.from_url(redis_url)
 
 
-class Root(object):
-    """
-    """
-
-    __acl__ = [
-        (Allow, Authenticated, 'logged_in')
-    ]
-
-    def __init__(self, request):
-        """
-        """
-        self.request = request
-
-
 def main(global_config, **settings):
     """
     """
@@ -38,7 +24,6 @@ def main(global_config, **settings):
     config = Configurator(
         authentication_policy=authentication_policy,
         authorization_policy=authorization_policy,
-        root_factory=Root,
         session_factory=session_factory,
         settings=settings,
         )
