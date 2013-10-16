@@ -19,7 +19,7 @@ def link_user(logged_in_entry):
 def get_user(request):
     user = unauthenticated_userid(request)
     if user is not None:
-    if user in [i.decode() for i in db.smembers('users')]:
+        if user in [i.decode() for i in db.smembers('users')]:
             return user
         else:
             return None
