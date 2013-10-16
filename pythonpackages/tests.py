@@ -12,7 +12,7 @@ class PythonPackagesTests(unittest.TestCase):
         """ Clear out the application registry """
         testing.tearDown()
 
-    def test_root(self):
+    def test_root_view(self):
         from pythonpackages.views import root
         request = testing.DummyRequest()
         result = root(request)
