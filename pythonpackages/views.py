@@ -17,6 +17,8 @@ import requests
 
 API_GH_USER = 'https://api.github.com/user?%s'
 
+FORMAT = '%m/%d/%y'
+
 GH_CLIENT_ID = os.environ.get('GITHUB_CLIENT_ID', '')
 GH_CLIENT_SECRET = os.environ.get('GITHUB_CLIENT_SECRET', '')
 
@@ -24,8 +26,6 @@ GH_AUTH = 'https://github.com/login/oauth/authorize?client_id=%s' % (
     GH_CLIENT_ID)
 
 GH_ACCESS_TOKEN = 'https://github.com/login/oauth/access_token'
-
-NOW = '%m/%d/%y'
 
 PYPI_ACCESS_TOKEN = 'https://pypi.python.org/oauth/access_token'
 
@@ -73,7 +73,7 @@ def callback_github(request):
 
         now = datetime.datetime.now()
         redis.lpush(
-            'logged_in', '%s logged in <%s>' % (login, now.strftime(NOW)))
+            'logged_in', '%s logged in <%s>' % (login, now.strftime(FORMAT)))
         redis.sadd('users', login)
 
         return HTTPFound(location="/%s" % login, headers=headers)
