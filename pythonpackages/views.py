@@ -23,11 +23,11 @@ GH_CLIENT_SECRET = os.environ.get('GITHUB_CLIENT_SECRET', '')
 GH_LOGIN_AUTH = 'https://github.com/login/oauth/authorize?client_id=%s' % (
     GH_CLIENT_ID)
 
-GH_LOGIN_TOKEN = 'https://github.com/login/oauth/access_token'
+GH_ACCESS_TOKEN = 'https://github.com/login/oauth/access_token'
 
 NOW = '%m/%d/%y'
 
-PYPI_LOGIN_AUTH = 'https://pypi.python.org/oauth/access_token'
+PYPI_ACCESS_TOKEN = 'https://pypi.python.org/oauth/access_token'
 
 payload = {
     'client_id': GH_CLIENT_ID,
@@ -69,7 +69,7 @@ def root(request):
         payload['code'] = path_qs['/?code'][0]
 
         access_token = requests.post(
-            GH_LOGIN_TOKEN, data=payload).content
+            GH_ACCESS_TOKEN, data=payload).content
         access_token = access_token.decode()
 
         user_info = requests.get(
@@ -98,7 +98,7 @@ def user(request):
     """
     user = request.path_qs.strip('/')
     if user in [i.decode() for i in redis.smembers('users')]:
-        response['auth_url'] = PYPI_LOGIN_AUTH
+        response['auth_url'] = PYPI_ACCESS_TOKEN
         response['user'] = user
         return response
     else:
