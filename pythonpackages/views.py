@@ -108,7 +108,7 @@ def user(request):
     """
     """
     user = request.path_qs.strip('/')
-    if get_user(user):
+    if user in [i.decode() for i in db.smembers('users')]:
         response['access_token'] = PYPI_TOKEN_URL
         response['user'] = user
         return response
