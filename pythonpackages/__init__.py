@@ -11,8 +11,13 @@ import os
 
 class UserFactory(object):
     @property
+
     def __acl__(self):
         return []
+
+    def __init__(self, request):
+        """
+        """
 
 
 def main(global_config, **settings):
@@ -72,6 +77,6 @@ def main(global_config, **settings):
     config.include('pyramid_mako')
     config.include('pyramid_redis_sessions')
 
-#    config.add_request_method(get_user, 'user', reify=True)
+    config.add_request_method(get_user, 'user', reify=True)
 
     return config.make_wsgi_app()
