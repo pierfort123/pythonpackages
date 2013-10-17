@@ -2,7 +2,6 @@ from pyramid.authentication import AuthTktAuthenticationPolicy
 from pyramid.authorization import ACLAuthorizationPolicy
 from pyramid.config import Configurator
 from pyramid_redis_sessions import session_factory_from_settings
-from .utils import get_user
 from .db import redis_url
 import os
 
@@ -72,7 +71,5 @@ def main(global_config, **settings):
 
     config.include('pyramid_mako')
     config.include('pyramid_redis_sessions')
-
-    config.add_request_method(get_user, 'user', reify=True)
 
     return config.make_wsgi_app()
