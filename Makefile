@@ -1,5 +1,2 @@
-push:
-	git push
-	git push dev master
-flake8:
+pre:
 	flake8 pythonpackages/*.py

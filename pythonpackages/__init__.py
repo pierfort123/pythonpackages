@@ -2,8 +2,6 @@ from pyramid.authentication import AuthTktAuthenticationPolicy
 from pyramid.authorization import ACLAuthorizationPolicy
 from pyramid.config import Configurator
 from pyramid_redis_sessions import session_factory_from_settings
-from pyramid.security import Allow
-from pyramid.security import Authenticated
 from .utils import get_user
 from .db import redis_url
 import os
@@ -11,7 +9,6 @@ import os
 
 class UserFactory(object):
     @property
-
     def __acl__(self):
         return []
 

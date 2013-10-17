@@ -5,7 +5,8 @@ from .db import db
 LINK_USER = "<a href='/%s'>%s</a> %s"
 
 
-# Via http://docs.pylonsproject.org/projects/pyramid_cookbook/en/latest/auth/user_object.html
+# Via http://docs.pylonsproject.org/projects/pyramid_cookbook/\
+# en/latest/auth/user_object.html
 def get_user(request):
     """
     """

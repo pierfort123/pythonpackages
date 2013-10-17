@@ -4,7 +4,6 @@ from pyramid.security import authenticated_userid
 from pyramid.security import forget
 from pyramid.security import remember
 from .db import db
-from .utils import get_user
 from .utils import link_user
 try:  # Py3
     from urllib import parse as urlparse
@@ -85,9 +84,10 @@ def callback_pypi():
     """
     """
 
+
 def logout(request):
     """
-    Trigger authtkt machinery to forget current user 
+    Trigger authtkt machinery to forget current user
     """
     headers = forget(request)
     return HTTPFound(location="/", headers=headers)
