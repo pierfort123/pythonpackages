@@ -43,8 +43,8 @@ response = {
 def about(request):
     """
     """
-    user = authenticated_userid(request)
-    response['user'] = user
+    userid = authenticated_userid(request)
+    response['user'] = userid
     return response
 
 
@@ -96,21 +96,21 @@ def logout(request):
 def root(request):
     """
     """
-    user = authenticated_userid(request)
+    userid = authenticated_userid(request)
     logged_in = db.lrange('logged_in', 0, 4)
     response['link_user'] = link_user
     response['logged_in'] = logged_in
-    response['user'] = user
+    response['user'] = userid
     return response
 
 
 def user(request):
     """
     """
-    user = request.path_qs.strip('/')
-    if user in [i.decode() for i in db.smembers('users')]:
+    userid = request.path_qs.strip('/')
+    if userid in [i.decode() for i in db.smembers('users')]:
         response['access_token'] = PYPI_TOKEN_URL
-        response['user'] = user
+        response['user'] = userid
         return response
     else:
         raise(NotFound)
