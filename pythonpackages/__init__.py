@@ -8,9 +8,8 @@ import os
 
 
 class UserFactory(object):
-    @property
-    def __acl__(self):
-        return []
+
+    __acl__ = []
 
     def __init__(self, request):
         """
