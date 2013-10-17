@@ -100,7 +100,7 @@ def root(request):
     logged_in = db.lrange('logged_in', 0, 4)
     response['link_user'] = link_user
     response['logged_in'] = logged_in
-    response['user'] = user
+    response['user'] = request.user
     return response
 
 
