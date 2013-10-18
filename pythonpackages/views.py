@@ -1,10 +1,13 @@
 from pyramid.exceptions import NotFound
 from pyramid.httpexceptions import HTTPFound
+from pyramid.security import Allow
 from pyramid.security import authenticated_userid
 from pyramid.security import forget
+from pyramid.security import has_permission
 from pyramid.security import remember
 from .db import db
 from .utils import link_user
+from . import UserFactory
 try:  # Py3
     from urllib import parse as urlparse
 except:  # Py2
@@ -53,6 +56,9 @@ def callback_github(request):
     Handle sign-ins; process callbacks from GitHub and log activity
     to database
     """
+
+    user_factory = UserFactory()
+
     path_qs = request.path_qs
     path_qs = urlparse.parse_qs(path_qs)
     if '/callback_github?code' in path_qs:
@@ -75,6 +81,8 @@ def callback_github(request):
         db.lpush(
             'logged_in', '%s logged in <%s>' % (login, now.strftime(FORMAT)))
         db.sadd('users', login)
+
+        user_factory.__acl__.append(Allow, login, 'manage_dashboard')
 
         return HTTPFound(location="/%s" % login, headers=headers)
     raise(NotFound)  # No query string, nothing to see here
@@ -110,6 +118,7 @@ def user(request):
     userid = request.path_qs.strip('/')
     if userid in [i.decode() for i in db.smembers('users')]:
         response['access_token'] = PYPI_TOKEN_URL
+        response['has_permission'] = has_permission(userid)
         response['user'] = userid
         return response
     else:
