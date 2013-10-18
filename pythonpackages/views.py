@@ -82,7 +82,7 @@ def callback_github(request):
             'logged_in', '%s logged in <%s>' % (login, now.strftime(FORMAT)))
         db.sadd('users', login)
 
-        user_factory.__acl__.append(Allow, login, 'manage_dashboard')
+        user_factory.__acl__.append(Allow, login, 'manage')
 
         return HTTPFound(location="/%s" % login, headers=headers)
     raise(NotFound)  # No query string, nothing to see here
@@ -118,7 +118,8 @@ def user(request):
     userid = request.path_qs.strip('/')
     if userid in [i.decode() for i in db.smembers('users')]:
         response['access_token'] = PYPI_TOKEN_URL
-        response['has_permission'] = has_permission(userid)
+        response['has_permission'] = has_permission
+        response['request'] = request
         response['user'] = userid
         return response
     else:
