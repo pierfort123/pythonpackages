@@ -56,9 +56,6 @@ def callback_github(request):
     Handle sign-ins; process callbacks from GitHub and log activity
     to database
     """
-
-    user_factory = UserFactory(request)
-
     path_qs = request.path_qs
     path_qs = urlparse.parse_qs(path_qs)
     if '/callback_github?code' in path_qs:
@@ -82,6 +79,7 @@ def callback_github(request):
             'logged_in', '%s logged in <%s>' % (login, now.strftime(FORMAT)))
         db.sadd('users', login)
 
+        user_factory = UserFactory(request)
         user_factory.__acl__.append([Allow, login, login])
 
         return HTTPFound(location="/%s" % login, headers=headers)
