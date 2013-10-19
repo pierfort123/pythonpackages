@@ -116,11 +116,12 @@ def user(request):
     """
     """
     path = request.path_qs.strip('/')
-    userid = authenticated_userid(request)
-    response['has_permission'] = has_permission
-    response['request'] = request
-    response['user'] = userid
     if path in [i.decode() for i in db.smembers('users')]:
+        userid = authenticated_userid(request)
+        response['has_permission'] = has_permission
+        response['request'] = request
+        response['path'] = path
+        response['user'] = userid
         response['access_token'] = PYPI_TOKEN_URL
         return response
     else:
