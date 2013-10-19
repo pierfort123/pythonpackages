@@ -132,10 +132,10 @@ def user(request):
         return {
             'access_token': PYPI_TOKEN_URL,
             'auth_url': GH_AUTH_URL,
-            'has_permission': has_permission
-            'request': request
-            'path': path
-            'user': userid
+            'has_permission': has_permission,
+            'request': request,
+            'path': path,
+            'user': userid,
         }
     else:
         raise(NotFound)
