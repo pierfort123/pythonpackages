@@ -115,12 +115,13 @@ def root(request):
 def user(request):
     """
     """
-    userid = request.path_qs.strip('/')
-    if userid in [i.decode() for i in db.smembers('users')]:
+    path = request.path_qs.strip('/')
+    userid = authenticated_userid(request)
+    response['has_permission'] = has_permission
+    response['request'] = request
+    response['user'] = userid
+    if path in [i.decode() for i in db.smembers('users')]:
         response['access_token'] = PYPI_TOKEN_URL
-        response['has_permission'] = has_permission
-        response['request'] = request
-        response['user'] = userid
         return response
     else:
         raise(NotFound)
