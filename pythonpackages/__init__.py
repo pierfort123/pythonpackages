@@ -14,7 +14,8 @@ class UserFactory(object):
     def __init__(self, request):
         """
         """
-        self.__acl__ = [(Allow, request.matchdict['user'], 'manage')]
+# raydeoism
+#        self.__acl__ = [(Allow, request.matchdict['user'], 'manage')]
 
 
 def main(global_config, **settings):
