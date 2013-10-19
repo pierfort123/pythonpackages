@@ -7,10 +7,9 @@
 </%block>
 
 <%block name="content">
-    <h2>Logins</h2>
     <div class="row">
         <div class="col-lg-offset-4 col-lg-4">
-          <h2><a href="/activity">Activity</a></h2>
+          <h2>Logins</h2>
           <ul class="list-unstyled">
           % for entry in logged_in:
             <li><span class="glyphicon glyphicon-user"></span> ${link_user(entry.decode())|n}</li>
