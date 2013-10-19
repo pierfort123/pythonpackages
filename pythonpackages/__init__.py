@@ -37,6 +37,12 @@ def main(global_config, **settings):
         route_name='about',
         renderer='pythonpackages:templates/about.mak')
 
+    config.add_route('activity', '/activity')
+    config.add_view(
+        'pythonpackages.views.activity',
+        route_name='activity',
+        renderer='pythonpackages:templates/activity.mak')
+
     config.add_route('callback_github', '/callback_github')
     config.add_view(
         'pythonpackages.views.callback_github',

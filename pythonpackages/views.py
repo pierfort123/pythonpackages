@@ -51,6 +51,12 @@ def about(request):
     return response
 
 
+def activity(request):
+    """
+    """
+    return response
+
+
 def callback_github(request):
     """
     Handle sign-ins; process callbacks from GitHub and log activity
