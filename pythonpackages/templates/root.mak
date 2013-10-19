@@ -96,7 +96,7 @@
       <%block name="content">
       <div class="row">
         <div class="col-lg-4">
-          <h2>Activity</h2>
+          <h2><a href="/activity">Activity</a></h2>
           <ul class="list-unstyled">
           % for entry in logged_in:
             <li><span class="glyphicon glyphicon-user"></span> ${link_user(entry.decode())|n}</li>
