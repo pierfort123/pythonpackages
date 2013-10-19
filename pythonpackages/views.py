@@ -47,6 +47,7 @@ def about(request):
     """
     """
     userid = authenticated_userid(request)
+    response = response.copy()
     response['user'] = userid
     return response
 
@@ -56,6 +57,7 @@ def activity(request):
     """
     userid = authenticated_userid(request)
     logged_in = db.lrange('logged_in', 0, -1)
+    response = response.copy()
     response['link_user'] = link_user
     response['logged_in'] = logged_in
     response['user'] = userid
@@ -115,6 +117,7 @@ def root(request):
     """
     userid = authenticated_userid(request)
     logged_in = db.lrange('logged_in', 0, 4)
+    response = response.copy()
     response['link_user'] = link_user
     response['logged_in'] = logged_in
     response['user'] = userid
@@ -127,6 +130,7 @@ def user(request):
     path = request.path_qs.strip('/')
     if path in [i.decode() for i in db.smembers('users')]:
         userid = authenticated_userid(request)
+        response = response.copy()
         response['has_permission'] = has_permission
         response['request'] = request
         response['path'] = path
