@@ -57,7 +57,7 @@ def callback_github(request):
     to database
     """
 
-    user_factory = UserFactory()
+    user_factory = UserFactory(request)
 
     path_qs = request.path_qs
     path_qs = urlparse.parse_qs(path_qs)
