@@ -7,9 +7,11 @@
 </%block>
 
 <%block name="content">
+    % for entry in logged_in:
     <div class="row">
-        <div class="col-lg-9">
-            <p>Enthusiastically scale distinctive e-commerce through backward-compatible results. Synergistically grow error-free users through value-added convergence. Phosfluorescently myocardinate resource-leveling architectures without orthogonal value.</p>
+        <div class="col-lg-12">
+            <p><span class="glyphicon glyphicon-user"></span> ${link_user(entry.decode())|n}</p>
         </div>
     </div>
+    % endfor
 </%block>

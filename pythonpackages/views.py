@@ -54,6 +54,11 @@ def about(request):
 def activity(request):
     """
     """
+    userid = authenticated_userid(request)
+    logged_in = db.lrange('logged_in', 0, -1)
+    response['link_user'] = link_user
+    response['logged_in'] = logged_in
+    response['user'] = userid
     return response
 
 
