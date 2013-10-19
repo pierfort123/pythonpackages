@@ -32,24 +32,16 @@ GH_TOKEN_URL = 'https://github.com/login/oauth/access_token'
 
 PYPI_TOKEN_URL = 'https://pypi.python.org/oauth/access_token'
 
-payload = {
-    'client_id': GH_CLIENT_ID,
-    'client_secret': GH_CLIENT_SECRET,
-    'code': None,
-}
-response = {
-    'auth_url': GH_AUTH_URL,
-    'user': None,
-}
 
 
 def about(request):
     """
     """
     userid = authenticated_userid(request)
-    response = response.copy()
-    response['user'] = userid
-    return response
+    return {
+        'auth_url': GH_AUTH_URL,
+        'user': user,
+    }
 
 
 def activity(request):
@@ -57,11 +49,12 @@ def activity(request):
     """
     userid = authenticated_userid(request)
     logged_in = db.lrange('logged_in', 0, -1)
-    response = response.copy()
-    response['link_user'] = link_user
-    response['logged_in'] = logged_in
-    response['user'] = userid
-    return response
+    return {
+        'auth_url': GH_AUTH_URL,
+        'link_user': link_user,
+        'logged_in': logged_in,
+        'user': userid,
+    }
 
 
 def callback_github(request):
@@ -72,7 +65,12 @@ def callback_github(request):
     path_qs = request.path_qs
     path_qs = urlparse.parse_qs(path_qs)
     if '/callback_github?code' in path_qs:
-        payload['code'] = path_qs['/callback_github?code'][0]
+
+        payload = {
+            'client_id': GH_CLIENT_ID,
+            'client_secret': GH_CLIENT_SECRET,
+            'code': path_qs['/callback_github?code'][0],
+        }
 
         access_token = requests.post(
             GH_TOKEN_URL, data=payload).content
@@ -117,11 +115,12 @@ def root(request):
     """
     userid = authenticated_userid(request)
     logged_in = db.lrange('logged_in', 0, 4)
-    response = response.copy()
-    response['link_user'] = link_user
-    response['logged_in'] = logged_in
-    response['user'] = userid
-    return response
+    return {
+        'auth_url': GH_AUTH_URL,
+        'link_user': link_user,
+        'logged_in': logged_in,
+        'user': userid,
+    }
 
 
 def user(request):
@@ -130,12 +129,13 @@ def user(request):
     path = request.path_qs.strip('/')
     if path in [i.decode() for i in db.smembers('users')]:
         userid = authenticated_userid(request)
-        response = response.copy()
-        response['has_permission'] = has_permission
-        response['request'] = request
-        response['path'] = path
-        response['user'] = userid
-        response['access_token'] = PYPI_TOKEN_URL
-        return response
+        return {
+            'access_token': PYPI_TOKEN_URL,
+            'auth_url': GH_AUTH_URL,
+            'has_permission': has_permission
+            'request': request
+            'path': path
+            'user': userid
+        }
     else:
         raise(NotFound)
