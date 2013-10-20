@@ -7,7 +7,6 @@ from pyramid.security import has_permission
 from pyramid.security import remember
 from .db import db
 from .utils import link_user
-from . import UserFactory
 try:  # Py3
     from urllib import parse as urlparse
 except:  # Py2
