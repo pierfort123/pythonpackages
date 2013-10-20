@@ -6,7 +6,7 @@ from pyramid.security import has_permission
 from pyramid.security import remember
 from .config import auth_url
 from .config import user_url
-from .config import FORMAT
+from .config import _now
 from .config import GH_CLIENT_ID
 from .config import GH_CLIENT_SECRET
 from .config import GH_TOKEN_URL
@@ -74,7 +74,7 @@ def callback_github(request):
 
         now = datetime.datetime.now()
         db.lpush(
-            'logged_in', '%s logged in <%s>' % (login, now.strftime(FORMAT)))
+            'logged_in', '%s logged in <%s>' % (login, now.strftime(_now)))
         db.sadd('users', login)
 
         return HTTPFound(location="/%s" % login, headers=headers)

@@ -2,7 +2,7 @@ import os
 
 user_url = 'https://api.github.com/user?%s'
 
-FORMAT = '%m/%d/%y'
+_now = '%m/%d/%y'
 
 GH_CLIENT_ID = os.getenv('GITHUB_CLIENT_ID', '')
 GH_CLIENT_SECRET = os.getenv('GITHUB_CLIENT_SECRET', '')
