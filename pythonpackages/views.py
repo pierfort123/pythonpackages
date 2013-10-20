@@ -7,7 +7,7 @@ from pyramid.security import remember
 from .config import auth_url
 from .config import user_url
 from .config import _now
-from .config import GH_CLIENT_ID
+from .config import client_id
 from .config import GH_CLIENT_SECRET
 from .config import GH_TOKEN_URL
 from .config import PYPI_TOKEN_URL
@@ -55,7 +55,7 @@ def callback_github(request):
     if '/callback_github?code' in path_qs:
 
         payload = {
-            'client_id': GH_CLIENT_ID,
+            'client_id': client_id,
             'client_secret': GH_CLIENT_SECRET,
             'code': path_qs['/callback_github?code'][0],
         }
