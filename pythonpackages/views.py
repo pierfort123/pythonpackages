@@ -90,9 +90,6 @@ def callback_github(request):
             'logged_in', '%s logged in <%s>' % (login, now.strftime(FORMAT)))
         db.sadd('users', login)
 
-        user_factory = UserFactory(request)
-        user_factory.__acl__.append([Allow, login, login])
-
         return HTTPFound(location="/%s" % login, headers=headers)
     raise(NotFound)  # No query string, nothing to see here
 

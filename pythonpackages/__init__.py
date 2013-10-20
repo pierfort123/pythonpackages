@@ -7,16 +7,6 @@ from .db import redis_url
 import os
 
 
-class UserFactory(object):
-
-    __acl__ = []
-
-    def __init__(self, request):
-        """
-        """
-        self.__acl__ = [(Allow, request.matchdict['user_id'], 'manage')]
-
-
 def main(global_config, **settings):
     """
     """
@@ -67,7 +57,7 @@ def main(global_config, **settings):
         route_name='logout')
 
     config.add_route(
-        'user', '/{user}', factory=UserFactory,
+        'user', '/{user}',
     )
     config.add_view(
         'pythonpackages.views.user',
