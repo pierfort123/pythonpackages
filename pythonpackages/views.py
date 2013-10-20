@@ -4,6 +4,13 @@ from pyramid.security import authenticated_userid
 from pyramid.security import forget
 from pyramid.security import has_permission
 from pyramid.security import remember
+from .config import API_GH_USER
+from .config import FORMAT
+from .config import GH_CLIENT_ID
+from .config import GH_CLIENT_SECRET
+from .config import GH_AUTH_URL
+from .config import GH_TOKEN_URL
+from .config import PYPI_TOKEN_URL
 from .db import db
 from .utils import link_user
 try:  # Py3
@@ -11,24 +18,8 @@ try:  # Py3
 except:  # Py2
     import urlparse
 import datetime
-import os
 import json
 import requests
-
-
-API_GH_USER = 'https://api.github.com/user?%s'
-
-FORMAT = '%m/%d/%y'
-
-GH_CLIENT_ID = os.environ.get('GITHUB_CLIENT_ID', '')
-GH_CLIENT_SECRET = os.environ.get('GITHUB_CLIENT_SECRET', '')
-
-GH_AUTH_URL = 'https://github.com/login/oauth/authorize?client_id=%s' % (
-    GH_CLIENT_ID)
-
-GH_TOKEN_URL = 'https://github.com/login/oauth/access_token'
-
-PYPI_TOKEN_URL = 'https://pypi.python.org/oauth/access_token'
 
 
 def about(request):
