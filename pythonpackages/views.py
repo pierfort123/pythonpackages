@@ -40,7 +40,7 @@ def about(request):
     userid = authenticated_userid(request)
     return {
         'auth_url': GH_AUTH_URL,
-        'user': user,
+        'user': userid,
     }
 
 
