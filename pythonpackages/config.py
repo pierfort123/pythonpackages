@@ -1,6 +1,6 @@
 import os
 
-API_GH_USER = 'https://api.github.com/user?%s'
+user_url = 'https://api.github.com/user?%s'
 
 FORMAT = '%m/%d/%y'
 

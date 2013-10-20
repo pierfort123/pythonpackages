@@ -5,7 +5,7 @@ from pyramid.security import forget
 from pyramid.security import has_permission
 from pyramid.security import remember
 from .config import auth_url
-from .config import API_GH_USER
+from .config import user_url
 from .config import FORMAT
 from .config import GH_CLIENT_ID
 from .config import GH_CLIENT_SECRET
@@ -64,8 +64,7 @@ def callback_github(request):
             GH_TOKEN_URL, data=payload).content
         access_token = access_token.decode()
 
-        user_info = requests.get(
-            API_GH_USER % access_token).content
+        user_info = requests.get(user_url % access_token).content
         user_info = user_info.decode()
         user_info = json.loads(user_info)
 
