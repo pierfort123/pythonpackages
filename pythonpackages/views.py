@@ -8,9 +8,9 @@ from .config import auth_url
 from .config import user_url
 from .config import _now
 from .config import client_id
-from .config import GH_CLIENT_SECRET
-from .config import GH_TOKEN_URL
-from .config import PYPI_TOKEN_URL
+from .config import client_secret
+from .config import token_url_gh
+from .config import token_url_pypi
 from .db import db
 from .utils import link_user
 try:  # Py3
@@ -56,12 +56,12 @@ def callback_github(request):
 
         payload = {
             'client_id': client_id,
-            'client_secret': GH_CLIENT_SECRET,
+            'client_secret': client_secret,
             'code': path_qs['/callback_github?code'][0],
         }
 
         access_token = requests.post(
-            GH_TOKEN_URL, data=payload).content
+            token_url_gh, data=payload).content
         access_token = access_token.decode()
 
         user_info = requests.get(user_url % access_token).content
@@ -114,7 +114,7 @@ def user(request):
     if path in [i.decode() for i in db.smembers('users')]:
         userid = authenticated_userid(request)
         return {
-            'access_token': PYPI_TOKEN_URL,
+            'access_token': token_url_pypi,
             'auth_url': auth_url,
             'has_permission': has_permission,
             'request': request,
