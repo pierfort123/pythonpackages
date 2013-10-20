@@ -2,7 +2,6 @@ from pyramid.authentication import AuthTktAuthenticationPolicy
 from pyramid.authorization import ACLAuthorizationPolicy
 from pyramid.config import Configurator
 from pyramid_redis_sessions import session_factory_from_settings
-from pyramid.security import Allow
 from .db import redis_url
 import os
 

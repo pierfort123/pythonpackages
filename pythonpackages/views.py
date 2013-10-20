@@ -1,6 +1,5 @@
 from pyramid.exceptions import NotFound
 from pyramid.httpexceptions import HTTPFound
-from pyramid.security import Allow
 from pyramid.security import authenticated_userid
 from pyramid.security import forget
 from pyramid.security import has_permission
@@ -30,7 +29,6 @@ GH_AUTH_URL = 'https://github.com/login/oauth/authorize?client_id=%s' % (
 GH_TOKEN_URL = 'https://github.com/login/oauth/access_token'
 
 PYPI_TOKEN_URL = 'https://pypi.python.org/oauth/access_token'
-
 
 
 def about(request):
