@@ -1,4 +1,4 @@
-pre:
+test:
 	flake8 pythonpackages/*.py
 	bin/python setup.py test
 push:
