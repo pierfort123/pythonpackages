@@ -1,4 +1,17 @@
+from pyramid.security import unauthenticated_userid
+
+
 LINK_USER = "<a href='/%s'>%s</a> %s"
+
+
+def get_user(request):
+    """
+    """
+    import pdb ; pdb.set_trace()
+    userid = authenticated_userid(request)
+    if userid in [i.decode() for i in db.smembers('users')]:
+        return userid
+    return None
 
 
 def link_user(logged_in_entry):

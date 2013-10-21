@@ -7,7 +7,7 @@
     <p><a href="${access_token}" class="btn btn-primary btn-lg">Connect to PyPI &raquo;</a></p>
     % endif
 
-    ${request.context}
+    ${request.context.__acl__}
 
 </%block>
 

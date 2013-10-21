@@ -1,9 +1,24 @@
 from pyramid.authentication import AuthTktAuthenticationPolicy
 from pyramid.authorization import ACLAuthorizationPolicy
 from pyramid.config import Configurator
+from pyramid.security import Allow
 from pyramid_redis_sessions import session_factory_from_settings
 from .db import redis_url
+from .utils import get_user
 import os
+
+
+class UserFactory(object):
+    """
+    """
+
+    __acl__ = []
+
+
+    def __init__(self, request):
+        """
+        """
+        self.__acl__ = [(Allow, request.matchdict['user'], 'manage')]
 
 
 def main(global_config, **settings):
@@ -57,6 +72,7 @@ def main(global_config, **settings):
 
     config.add_route(
         'user', '/{user}',
+        factory=UserFactory,
     )
     config.add_view(
         'pythonpackages.views.user',
@@ -68,5 +84,7 @@ def main(global_config, **settings):
 
     config.include('pyramid_mako')
     config.include('pyramid_redis_sessions')
+
+#    config.add_request_method(get_user, 'user', reify=True)
 
     return config.make_wsgi_app()
