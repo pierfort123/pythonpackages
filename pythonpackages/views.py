@@ -4,13 +4,13 @@ from pyramid.security import authenticated_userid
 from pyramid.security import forget
 from pyramid.security import has_permission
 from pyramid.security import remember
-from .config import auth_url
-from .config import user_url
 from .config import _now
+from .config import auth_url
 from .config import client_id
 from .config import client_secret
 from .config import token_url_gh
 from .config import token_url_pypi
+from .config import user_url
 from .db import db
 from .utils import link_user
 try:  # Py3
