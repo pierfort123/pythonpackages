@@ -3,12 +3,9 @@
 <%block name="jumbotron">
     <h1>Profile</h1>
     <p>${path}</p>
-    % if has_permission(path, request.context, request):
+    % if has_permission('manage', request.context, request):
     <p><a href="${access_token}" class="btn btn-primary btn-lg">Connect to PyPI &raquo;</a></p>
     % endif
-
-    ${request.context.__acl__}
-
 </%block>
 
 <%block name="content">
