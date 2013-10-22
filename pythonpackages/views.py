@@ -5,9 +5,12 @@ from pyramid.security import forget
 from pyramid.security import has_permission
 from pyramid.security import remember
 from .config import _now
-from .config import auth_url
-from .config import client_id
-from .config import client_secret
+from .config import auth_url_gh
+from .config import auth_url_pypi
+from .config import client_id_gh
+from .config import client_id_pypi
+from .config import client_secret_gh
+from .config import client_secret_pypi
 from .config import token_url_gh
 from .config import token_url_pypi
 from .config import user_url
@@ -27,7 +30,7 @@ def about(request):
     """
     userid = authenticated_userid(request)
     return {
-        'auth_url': auth_url,
+        'auth_url': auth_url_gh,
         'user': userid,
     }
 
@@ -38,7 +41,7 @@ def activity(request):
     userid = authenticated_userid(request)
     logged_in = db.lrange('logged_in', 0, -1)
     return {
-        'auth_url': auth_url,
+        'auth_url': auth_url_gh,
         'link_user': link_user,
         'logged_in': logged_in,
         'user': userid,
@@ -55,8 +58,8 @@ def callback_github(request):
     if '/callback_github?code' in path_qs:
 
         payload = {
-            'client_id': client_id,
-            'client_secret': client_secret,
+            'client_id': client_id_gh,
+            'client_secret': client_secret_gh,
             'code': path_qs['/callback_github?code'][0],
         }
 
@@ -94,13 +97,32 @@ def logout(request):
     return HTTPFound(location="/", headers=headers)
 
 
+def pypi_auth(request):
+    """
+    Thanks to Richard Jones for this PyPI OAuth code
+    """
+    if 'pypi_auth' in request.POST:
+        auth = requests.auth.OAuth1(
+            client_id_pypi,
+            client_secret_pypi,
+            signature_type='auth_header')
+        response = requests.get(token_url_pypi, auth=auth, verify=False)
+        query_string = urlparse.parse_qs(response.content)
+#        if 'oauth_token_secret' in query_string:
+#            oauth_token_secret = query_string['oauth_token_secret'][0]
+        if 'oauth_token' in query_string:
+            oauth_token = query_string['oauth_token'][0]
+        return HTTPFound(
+            location=auth_url_pypi % oauth_token)
+
+
 def root(request):
     """
     """
     userid = authenticated_userid(request)
     logged_in = db.lrange('logged_in', 0, 4)
     return {
-        'auth_url': auth_url,
+        'auth_url': auth_url_gh,
         'link_user': link_user,
         'logged_in': logged_in,
         'user': userid,
@@ -115,7 +137,7 @@ def user(request):
         userid = authenticated_userid(request)
         return {
             'access_token': token_url_pypi,
-            'auth_url': auth_url,
+            'auth_url': auth_url_gh,
             'has_permission': has_permission,
             'request': request,
             'path': path,
