@@ -97,10 +97,10 @@ def callback_pypi(request):
     query_string = urlparse.parse_qs(response.content)
 #    if 'oauth_token_secret' in query_string:
 #        oauth_token_secret = query_string['oauth_token_secret'][0]
-    if 'oauth_token' in query_string:
-        oauth_token = query_string['oauth_token'][0]
+#    if 'oauth_token' in query_string:
+#        oauth_token = query_string['oauth_token'][0]
     return HTTPFound(
-        location=auth_url_pypi % oauth_token)
+        location=auth_url_pypi % query_string)
 
 
 def logout(request):
