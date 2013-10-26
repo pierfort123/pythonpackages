@@ -84,9 +84,22 @@ def callback_github(request):
     raise(NotFound)  # No query string, nothing to see here
 
 
-def callback_pypi():
+def callback_pypi(request):
     """
+    Thanks to Richard Jones for this PyPI OAuth code
     """
+    auth = requests.auth.OAuth1(
+        client_id_pypi,
+        client_secret_pypi,
+        signature_type='auth_header')
+    response = requests.get(token_url_pypi, auth=auth, verify=False)
+    query_string = urlparse.parse_qs(response.content)
+#    if 'oauth_token_secret' in query_string:
+#        oauth_token_secret = query_string['oauth_token_secret'][0]
+    if 'oauth_token' in query_string:
+        oauth_token = query_string['oauth_token'][0]
+    return HTTPFound(
+        location=auth_url_pypi % oauth_token)
 
 
 def logout(request):
@@ -97,23 +110,6 @@ def logout(request):
     return HTTPFound(location="/", headers=headers)
 
 
-def pypi_auth(request):
-    """
-    Thanks to Richard Jones for this PyPI OAuth code
-    """
-    if 'pypi_auth' in request.POST:
-        auth = requests.auth.OAuth1(
-            client_id_pypi,
-            client_secret_pypi,
-            signature_type='auth_header')
-        response = requests.get(token_url_pypi, auth=auth, verify=False)
-        query_string = urlparse.parse_qs(response.content)
-#        if 'oauth_token_secret' in query_string:
-#            oauth_token_secret = query_string['oauth_token_secret'][0]
-        if 'oauth_token' in query_string:
-            oauth_token = query_string['oauth_token'][0]
-        return HTTPFound(
-            location=auth_url_pypi % oauth_token)
 
 
 def root(request):
