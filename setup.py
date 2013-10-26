@@ -13,6 +13,7 @@ setup(
         'pyramid_mako',
         'redis',
         'requests',
+        'requests-oauthlib',
     ],
     packages=find_packages(),
     test_suite = 'pythonpackages.tests.PythonPackagesTests',

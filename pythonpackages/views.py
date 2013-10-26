@@ -88,7 +88,7 @@ def callback_pypi(request):
     """
     Thanks to Richard Jones for this PyPI OAuth code
     """
-    auth = requests.auth.OAuth1(
+    auth = requests_oauthlib.OAuth1(
         client_id_pypi,
         client_secret_pypi,
         signature_type='auth_header')
