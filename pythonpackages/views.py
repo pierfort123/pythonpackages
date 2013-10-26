@@ -23,6 +23,7 @@ except:  # Py2
 import datetime
 import json
 import requests
+import requests_oauthlib
 
 
 def about(request):
