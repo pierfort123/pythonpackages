@@ -3,7 +3,7 @@
 <%block name="nav">
     <li><a href="/">Home</a></li>
     <li class="active"><a href="/about">About</a></li>
-/%block>
+</%block>
 
 
 <%block name="jumbotron">
