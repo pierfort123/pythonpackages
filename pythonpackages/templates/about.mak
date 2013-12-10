@@ -29,6 +29,8 @@
 
 <%block name="content">
 
-    <p class="alert">https://bitbucket.org/pypa/pypi/issue/85/oauth-authorise-not-found-https-must-be</p>
+    <div class="alert alert-warning">
+      <strong>Blocked!</strong> Please note: we are blocked waiting for an OAuth fix to PyPI. If you care, please add a comment to this ticket: <a href="https://bitbucket.org/pypa/pypi/issue/85/oauth-authorise-not-found-https-must-be">https://bitbucket.org/pypa/pypi/issue/85/oauth-authorise-not-found-https-must-be</a>.
+    </div>
 
 </%block>
