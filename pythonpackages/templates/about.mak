@@ -29,6 +29,6 @@
 
 <%block name="content">
 
-   <p>Enthusiastically scale distinctive e-commerce through backward-compatible results. Synergistically grow error-free users through value-added convergence. Phosfluorescently myocardinate resource-leveling architectures without orthogonal value. </p>
+    <p class="alert">https://bitbucket.org/pypa/pypi/issue/85/oauth-authorise-not-found-https-must-be</p>
 
 </%block>
