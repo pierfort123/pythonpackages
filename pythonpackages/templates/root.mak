@@ -46,6 +46,7 @@
             <%block name="nav">
             <li class="active"><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
+            <li><a href="http://test.pythonpackages.com">Test</a></li>
             </%block>
           </ul>
           <form class="navbar-right">
