@@ -16,7 +16,7 @@
 <%block name="content">
 
     <div class="alert alert-warning">
-      <strong>Blocked!</strong> Please note we are blocked waiting for an OAuth fix to PyPI. If you care, please add a comment to this ticket: <a href="https://bitbucket.org/pypa/pypi/issue/85/oauth-authorise-not-found-https-must-be">https://bitbucket.org/pypa/pypi/issue/85/oauth-authorise-not-found-https-must-be</a>.
+      <strong>Blocked!</strong> Please note our development is blocked waiting for an OAuth fix to PyPI. If you want "<code>git push</code> to release" to work again, please add a comment to this ticket: <a href="https://bitbucket.org/pypa/pypi/issue/85/oauth-authorise-not-found-https-must-be">https://bitbucket.org/pypa/pypi/issue/85/oauth-authorise-not-found-https-must-be</a>.
     </div>
 
 </%block>
