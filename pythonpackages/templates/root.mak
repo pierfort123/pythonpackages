@@ -97,7 +97,7 @@
       <hr>
 
       <footer>
-        <p>&copy; <a href="http://aclark.net">ACLARK.NET, LLC</a> 2011 &mdash; 2013</p>
+        <p>&copy; <a href="http://aclark.net">ACLARK.NET, LLC</a> 2011 &mdash; 2014</p>
       </footer>
     </div> <!-- /container -->
 
