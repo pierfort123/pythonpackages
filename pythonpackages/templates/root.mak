@@ -49,7 +49,7 @@
             <li><a href="http://test.pythonpackages.com">Test</a></li>
             </%block>
           </ul>
-          <form class="navbar-right">
+          <form class="navbar-right navbar-form">
             % if not user:
             <a class="btn btn-success" style="color: white" href="${auth_url}">Sign in</a>
             % else:
