@@ -74,7 +74,7 @@
         <%block name="jumbotron">
         <h1>Hello, Python Programmers!</h1>
         <p>Python Packages connects your GitHub account to the Python Package Index to make publishing Python software easier and more fun.</p>
-        <p><a href="/about" class="btn btn-primary btn-lg btn-warning">Learn more</a></p>
+        <p><a href="/about" class="btn btn-primary btn-lg">Learn more</a></p>
         </%block>
       </div>
     </div>
