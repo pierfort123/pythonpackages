@@ -7,15 +7,14 @@ from pyramid.security import remember
 from .config import _now
 
 from .config import GITHUB_AUTH_URL
-from .config import auth_url_pypi
-
 from .config import GITHUB_CLIENT_ID
 from .config import GITHUB_CLIENT_SECRET
+from .config import GITHUB_TOKEN_URL
 
+from .config import auth_url_pypi
 from .config import client_id_pypi
 from .config import client_secret_pypi
 
-from .config import GITHUB_TOKEN_URL
 from .config import token_url_pypi
 
 from .config import user_url
