@@ -93,18 +93,23 @@ def callback_pypi(request):
     """
     Thanks to Richard Jones for this PyPI OAuth code
     """
+
     auth = requests_oauthlib.OAuth1(
         PYPI_CONSUMER_KEY,
         PYPI_CONSUMER_SECRET,
         signature_type='auth_header')
+
     response = requests.get(PYPI_TOKEN_URL, auth=auth, verify=False)
+
     query_string = urlparse.parse_qs(response.content)
-    if 'oauth_token_secret' in query_string:
-        oauth_token_secret = query_string['oauth_token_secret'][0]
+
+#    if 'oauth_token_secret' in query_string:
+#        oauth_token_secret = query_string['oauth_token_secret'][0]
+
     if 'oauth_token' in query_string:
         oauth_token = query_string['oauth_token'][0]
     return HTTPFound(
-        location=PYPI_AUTH_URL % query_string)
+        location=PYPI_AUTH_URL % oauth_token)
 
 
 def logout(request):
@@ -113,8 +118,6 @@ def logout(request):
     """
     headers = forget(request)
     return HTTPFound(location="/", headers=headers)
-
-
 
 
 def root(request):
