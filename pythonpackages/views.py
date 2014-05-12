@@ -10,14 +10,13 @@ from .config import GITHUB_AUTH_URL
 from .config import GITHUB_CLIENT_ID
 from .config import GITHUB_CLIENT_SECRET
 from .config import GITHUB_TOKEN_URL
+from .config import GITHUB_USER_URL
 
 from .config import auth_url_pypi
 from .config import client_id_pypi
 from .config import client_secret_pypi
-
 from .config import token_url_pypi
 
-from .config import user_url
 
 from .db import db
 from .utils import link_user
@@ -73,7 +72,7 @@ def callback_github(request):
             GITHUB_TOKEN_URL, data=payload).content
         access_token = access_token.decode()
 
-        user_info = requests.get(user_url % access_token).content
+        user_info = requests.get(GITHUB_USER_URL % access_token).content
         user_info = user_info.decode()
         user_info = json.loads(user_info)
 
