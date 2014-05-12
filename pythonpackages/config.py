@@ -4,8 +4,9 @@ import os
 _now = '%m/%d/%y'
 
 GITHUB_CLIENT_ID = os.getenv('GITHUB_CLIENT_ID', '')
+GITHUB_CLIENT_SECRET = os.getenv('GITHUB_CLIENT_SECRET', '')
+
 client_id_pypi = os.getenv('PYPI_CONSUMER_KEY', '')
-client_secret_gh = os.getenv('GITHUB_CLIENT_SECRET', '')
 client_secret_pypi = os.getenv('PYPI_CONSUMER_SECRET', '')
 
 auth_url_gh = 'https://github.com/login/oauth/authorize?client_id=%s' % (

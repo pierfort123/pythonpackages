@@ -10,9 +10,9 @@ from .config import auth_url_gh
 from .config import auth_url_pypi
 
 from .config import GITHUB_CLIENT_ID
-from .config import client_id_pypi
+from .config import GITHUB_CLIENT_SECRET
 
-from .config import client_secret_gh
+from .config import client_id_pypi
 from .config import client_secret_pypi
 
 from .config import token_url_gh
@@ -66,7 +66,7 @@ def callback_github(request):
 
         payload = {
             'client_id': GITHUB_CLIENT_ID,
-            'client_secret': client_secret_gh,
+            'client_secret': GITHUB_CLIENT_SECRET,
             'code': path_qs['/callback_github?code'][0],
         }
 
