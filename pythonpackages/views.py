@@ -12,7 +12,7 @@ from .config import GITHUB_CLIENT_SECRET
 from .config import GITHUB_TOKEN_URL
 from .config import GITHUB_USER_URL
 
-from .config import auth_url_pypi
+from .config import PYPI_AUTH_URL
 from .config import client_id_pypi
 from .config import client_secret_pypi
 from .config import token_url_pypi
@@ -104,7 +104,7 @@ def callback_pypi(request):
     if 'oauth_token' in query_string:
         oauth_token = query_string['oauth_token'][0]
     return HTTPFound(
-        location=auth_url_pypi % query_string)
+        location=PYPI_AUTH_URL % query_string)
 
 
 def logout(request):

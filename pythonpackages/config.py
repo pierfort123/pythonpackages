@@ -14,7 +14,7 @@ GITHUB_USER_URL = 'https://api.github.com/user?%s'
 client_id_pypi = os.getenv('PYPI_CONSUMER_KEY', '')
 client_secret_pypi = os.getenv('PYPI_CONSUMER_SECRET', '')
 
-auth_url_pypi = (
+PYPI_AUTH_URL = (
     'https://pypi.python.org/oauth/authorise'
     '?oauth_token=%s&oauth_callback=http://pythonpackages.com/callback_pypi')
 
