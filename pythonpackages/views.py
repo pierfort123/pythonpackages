@@ -5,15 +5,21 @@ from pyramid.security import forget
 from pyramid.security import has_permission
 from pyramid.security import remember
 from .config import _now
+
 from .config import auth_url_gh
 from .config import auth_url_pypi
-from .config import client_id_gh
+
+from .config import GITHUB_CLIENT_ID
 from .config import client_id_pypi
+
 from .config import client_secret_gh
 from .config import client_secret_pypi
+
 from .config import token_url_gh
 from .config import token_url_pypi
+
 from .config import user_url
+
 from .db import db
 from .utils import link_user
 try:  # Py3
@@ -59,7 +65,7 @@ def callback_github(request):
     if '/callback_github?code' in path_qs:
 
         payload = {
-            'client_id': client_id_gh,
+            'client_id': GITHUB_CLIENT_ID,
             'client_secret': client_secret_gh,
             'code': path_qs['/callback_github?code'][0],
         }
