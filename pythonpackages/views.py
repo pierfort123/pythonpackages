@@ -124,7 +124,10 @@ def root(request):
     """
     """
     userid = authenticated_userid(request)
-    logged_in = db.lrange('logged_in', 0, 4)
+    try:  # XXX Better way
+        logged_in = db.lrange('logged_in', 0, 4)
+    except:
+        logged_in = None
     return {
         'auth_url': GITHUB_AUTH_URL,
         'link_user': link_user,
