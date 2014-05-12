@@ -13,8 +13,8 @@ from .config import GITHUB_TOKEN_URL
 from .config import GITHUB_USER_URL
 
 from .config import PYPI_AUTH_URL
-from .config import client_id_pypi
-from .config import client_secret_pypi
+from .config import PYPI_CONSUMER_KEY
+from .config import PYPI_CONSUMER_SECRET
 from .config import token_url_pypi
 
 
@@ -94,8 +94,8 @@ def callback_pypi(request):
     Thanks to Richard Jones for this PyPI OAuth code
     """
     auth = requests_oauthlib.OAuth1(
-        client_id_pypi,
-        client_secret_pypi,
+        PYPI_CONSUMER_KEY,
+        PYPI_CONSUMER_SECRET,
         signature_type='auth_header')
     response = requests.get(token_url_pypi, auth=auth, verify=False)
     query_string = urlparse.parse_qs(response.content)
