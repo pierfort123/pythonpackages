@@ -15,7 +15,7 @@ from .config import GITHUB_USER_URL
 from .config import PYPI_AUTH_URL
 from .config import PYPI_CONSUMER_KEY
 from .config import PYPI_CONSUMER_SECRET
-from .config import token_url_pypi
+from .config import PYPI_TOKEN_URL
 
 
 from .db import db
@@ -97,7 +97,7 @@ def callback_pypi(request):
         PYPI_CONSUMER_KEY,
         PYPI_CONSUMER_SECRET,
         signature_type='auth_header')
-    response = requests.get(token_url_pypi, auth=auth, verify=False)
+    response = requests.get(PYPI_TOKEN_URL, auth=auth, verify=False)
     query_string = urlparse.parse_qs(response.content)
     if 'oauth_token_secret' in query_string:
         oauth_token_secret = query_string['oauth_token_secret'][0]
@@ -137,7 +137,7 @@ def user(request):
     if path in [i.decode() for i in db.smembers('users')]:
         userid = authenticated_userid(request)
         return {
-            'access_token': token_url_pypi,
+            'access_token': PYPI_TOKEN_URL,
             'auth_url': GITHUB_AUTH_URL,
             'has_permission': has_permission,
             'request': request,
