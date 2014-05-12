@@ -9,7 +9,7 @@ GITHUB_CLIENT_SECRET = os.getenv('GITHUB_CLIENT_SECRET', '')
 client_id_pypi = os.getenv('PYPI_CONSUMER_KEY', '')
 client_secret_pypi = os.getenv('PYPI_CONSUMER_SECRET', '')
 
-auth_url_gh = 'https://github.com/login/oauth/authorize?client_id=%s' % (
+GITHUB_AUTH_URL = 'https://github.com/login/oauth/authorize?client_id=%s' % (
     GITHUB_CLIENT_ID)
 
 auth_url_pypi = (
